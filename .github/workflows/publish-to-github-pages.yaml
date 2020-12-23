@@ -1,0 +1,27 @@
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Use GitHub Actions' cache to shorten build times and decrease load on servers
+      - uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      # You may pin to the exact commit or the version.
+      - uses: helaili/jekyll-action@57a6a260778ffcec2b3ffb312f6e515e14e9fe62
+        with:
+          target_branch: 'gh-pages'
