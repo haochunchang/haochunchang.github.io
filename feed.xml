@@ -1,0 +1,1921 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://haochunchang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://haochunchang.github.io/" rel="alternate" type="text/html" /><updated>2020-12-28T10:10:33+00:00</updated><id>https://haochunchang.github.io/feed.xml</id><title type="html">Hao Chun Chang’s Blog</title><subtitle>This is a blog post about a software engineer started from biochemistry to medical artifical intelligence.</subtitle><entry><title type="html">LeetCode Mock Interview - onSite interview</title><link href="https://haochunchang.github.io/programming/2020/12/24/leetcode_mock_interview.html" rel="alternate" type="text/html" title="LeetCode Mock Interview - onSite interview" /><published>2020-12-24T00:00:00+00:00</published><updated>2020-12-24T00:00:00+00:00</updated><id>https://haochunchang.github.io/programming/2020/12/24/leetcode_mock_interview</id><content type="html" xml:base="https://haochunchang.github.io/programming/2020/12/24/leetcode_mock_interview.html">&lt;h3 id=&quot;power-of-four&quot;&gt;&lt;a href=&quot;https://leetcode.com/problems/power-of-four/&quot;&gt;Power of Four&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Description: Given an integer &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt;, return &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt; if it is a power of four.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;An integer &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt; is a power of four, if there exists an integer &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; such that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n == 4^x&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;My solution:&lt;/li&gt;
+  &lt;li&gt;First version: using loop to keep dividing by 4 until n is not divisible by 4 or equals 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPowerOfFour&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Second version: use 3 mathematical properties to determine n.&lt;/li&gt;
+  &lt;li&gt;Good explanation from &lt;a href=&quot;https://leetcode.com/problems/power-of-four/discuss/80460/1-line-C%2B%2B-solution-without-confusing-bit-manipulations&quot;&gt;this discussion post&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://leetcode.com/problems/power-of-four/discuss/80460/1-line-C++-solution-without-confusing-bit-manipulations/119156&quot;&gt;Explanation of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(num - 1) % 3 == 0&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPowerOfFour&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// bool positive = num &amp;gt; 0;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// bool isPowerOfTwo = (num &amp;amp; (num - 1)) == 0;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// bool divisibleByThree = (num - 1) % 3 == 0; // By binomial theorem&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Iteration is intuitive.&lt;/li&gt;
+  &lt;li&gt;Needs some sense of mathematics to come up with the second version.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;exclusive-time-of-functions&quot;&gt;&lt;a href=&quot;https://leetcode.com/problems/exclusive-time-of-functions/&quot;&gt;Exclusive Time of Functions&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Initially, the direction was correct but I did not store the previous timestamp. 
+Therefore, the difference between two starting functions cannot be computed.
+That’s the last step to the solution.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The solution:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;I used deque as stack to store the function id.&lt;/li&gt;
+      &lt;li&gt;Timestamp from previous function was saved to compute the time difference between current call and prevTimeious call.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;exclusiveTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# times[i] is the exclusive time for function i
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;times&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Stack for storing IDs of unfinished functions
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;funcIDs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deque&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;prevTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]:&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;start&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# If there were started functions,
+&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;# we added time for prevTimeious function.
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;funcIDs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;old_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;funcIDs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;old_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prevTime&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;funcIDs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;prevTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;end&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# The last function has finished
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;old_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;funcIDs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;old_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prevTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;prevTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;times&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;text-justification&quot;&gt;&lt;a href=&quot;https://leetcode.com/problems/text-justification/&quot;&gt;Text Justification&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The solution:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fullJustify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_of_letters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# If the current word cannot fit into this line.
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_of_letters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# Evenly distribute extra spaces to each word.
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_of_letters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_of_letters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;num_of_letters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ljust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The key is to evenly distribute extra spaces with:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This statement appends space to each member of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cur&lt;/code&gt; in rotation.&lt;/p&gt;</content><author><name></name></author><category term="[&quot;Programming&quot;]" /><summary type="html">Power of Four</summary></entry><entry><title type="html">Journal - 2020/11</title><link href="https://haochunchang.github.io/daily/sms/2020/11/01/journal.html" rel="alternate" type="text/html" title="Journal - 2020/11" /><published>2020-11-01T00:00:00+00:00</published><updated>2020-11-01T00:00:00+00:00</updated><id>https://haochunchang.github.io/daily/sms/2020/11/01/journal</id><content type="html" xml:base="https://haochunchang.github.io/daily/sms/2020/11/01/journal.html">&lt;h1 id=&quot;substitute-military-service-sms-93-days-left-112&quot;&gt;Substitute Military Service (SMS) 93 days left (11/2)&lt;/h1&gt;
+
+&lt;h2 id=&quot;plans&quot;&gt;Plans&lt;/h2&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Start training ECG models&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Review and finish Liver Image patent for internal review&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;today&quot;&gt;Today&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I was reading “Specification By Example”. It is about how to deliver right software.
+    &lt;ul&gt;
+      &lt;li&gt;The main essence is to construct “Living Documentation System” that updates along with production code.&lt;/li&gt;
+      &lt;li&gt;Other than functional unit tests, there are spec. tests that needs collaboration among Business, testers, analysts and developers.&lt;/li&gt;
+      &lt;li&gt;From User stories, extract spec. scope, refine the spec. to write tests that can also be documentation and acceptance tests.&lt;/li&gt;
+      &lt;li&gt;With spec. with example, everyone in the team can know the target of the software.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;</content><author><name></name></author><category term="[&quot;Daily&quot;, &quot;SMS&quot;]" /><summary type="html">Substitute Military Service (SMS) 93 days left (11/2)</summary></entry><entry><title type="html">Journal - 2020/10</title><link href="https://haochunchang.github.io/daily/sms/2020/10/13/journal.html" rel="alternate" type="text/html" title="Journal - 2020/10" /><published>2020-10-13T00:00:00+00:00</published><updated>2020-10-13T00:00:00+00:00</updated><id>https://haochunchang.github.io/daily/sms/2020/10/13/journal</id><content type="html" xml:base="https://haochunchang.github.io/daily/sms/2020/10/13/journal.html">&lt;h1 id=&quot;substitute-military-service-sms-day-58-1013&quot;&gt;Substitute Military Service (SMS) Day 58 (10/13)&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-happened-today&quot;&gt;What happened today?&lt;/h2&gt;
+
+&lt;h4 id=&quot;morning&quot;&gt;Morning:&lt;/h4&gt;
+
+&lt;p&gt;Despite the SMS meeting at 9:00, I still helped setting the classroom for physical fitness.
+All I need to do was tied up the title stripe of cloth and moving the speaker to the classroom.
+I felt I started to get accustomed to the SMS life.
+My courage for asking strangers has been increased. Maybe this is a sign for maturity?&lt;/p&gt;
+
+&lt;p&gt;At the SMS meeting, we got orders to keep tidy and stay strong as a team and other things.
+I was pointed out that I shoud get my haircut~!&lt;/p&gt;
+
+&lt;h4 id=&quot;afternoon&quot;&gt;Afternoon:&lt;/h4&gt;
+&lt;p&gt;Start reading a book borrowed from the library, which talks about the Stoic philosophy.
+That’s the reason I started writing this journal for recording my life and think about some questions.&lt;/p&gt;
+
+&lt;p&gt;The first several pages of the book said:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;We need to distinguish what is controllable and what is not.&lt;/li&gt;
+  &lt;li&gt;Control our heart, senses, actions and accepts what is uncontrollable.&lt;/li&gt;
+  &lt;li&gt;Everything needs direction or goal.&lt;/li&gt;
+  &lt;li&gt;Understand what obsessed you.&lt;/li&gt;
+  &lt;li&gt;Think rationally everyday.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The difficult part of this book is taking actions, not reading it.
+Therefore, I started this post to record everyday’s thinking.&lt;/p&gt;
+
+&lt;h4 id=&quot;evening&quot;&gt;Evening:&lt;/h4&gt;
+&lt;p&gt;During running, one companion talked about she has an unborn child.
+It makes me think of people often missed what they cannot have.&lt;/p&gt;
+
+&lt;p&gt;But a mother having a baby can really have emotional connection with him/her, it is completely normal to wonder what if the unborn baby would be.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;substitute-military-service-sms-day-59-1014&quot;&gt;Substitute Military Service (SMS) Day 59 (10/14)&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-happened-today-1&quot;&gt;What happened today?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Reading The Witcher series novel vol.1
+    &lt;ul&gt;
+      &lt;li&gt;Ciri and Geralt tend to Triss…&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Helping the doctor and nurses during vaccine injection.
+I notices that physical touch and eye contact can attract attention more effectively.
+As I was guiding the residents to nurses to take vaccine.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Today was the first time I sat on the doctor’s desk, although I was just helping inserting 
+Health Insurance Card and input the vaccine records with HIS system.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;At night, I still jogged for 3.5 km before eating pizzas and fried chickens during the introducing party.
+    &lt;ul&gt;
+      &lt;li&gt;At the party, I heard a lot about the history and some people’s gossip.&lt;/li&gt;
+      &lt;li&gt;I think the SMS group is quite kind despite they like to bicker each other.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;substitute-military-service-sms-day-60-1015&quot;&gt;Substitute Military Service (SMS) Day 60 (10/15)&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-happened-today-2&quot;&gt;What happened today?&lt;/h2&gt;
+
+&lt;p&gt;In the morning, one of our collegue ate breakfast at the front desk. The team leader kindly remind us not to eat in front of the service desk, since it is considered impolite to the veterans.&lt;/p&gt;
+
+&lt;p&gt;However, I made the same mistake in the afternoon having a piece of cake brought by senior collegue.
+And I was discovered by the team leader! Thanks to her kindly heart that she only reminded us again.
+This set up the “no eating at the service desk” rule.&lt;/p&gt;
+
+&lt;p&gt;Today’s Stoic reading told us that anger does not make you strong but exploit your weakness.
+Only the true strong can calmly face every challenge.&lt;/p&gt;
+
+&lt;p&gt;At night, the late call was at 20:00. I planed to be there at 19:55, but everyone else was already waiting at 19:50. How on time it is!
+As I was reminded, though not harsh at all, I still feel a little embarassing…&lt;/p&gt;
+
+&lt;p&gt;Today’s Mock interview: onsite interview consists of 3 problems.
+The attempted problem was calculating &lt;a href=&quot;https://leetcode.com/problems/container-with-most-water/&quot;&gt;the max area given an array of bars&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;learning-lessons&quot;&gt;Learning lessons:&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Do not eat during work time!&lt;/li&gt;
+  &lt;li&gt;The more you can control yourself, the stronger you are.&lt;/li&gt;
+  &lt;li&gt;Be on time (Early)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;progress&quot;&gt;Progress:&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Implement multiple face detection api calls in &lt;a href=&quot;&quot;&gt;smart-brain&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Finish reading &lt;a href=&quot;https://www.hacksplaining.com/&quot;&gt;hacksplaing.com&lt;/a&gt; about web security.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;next&quot;&gt;Next:&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Finish Udemy course by the end of October.&lt;/li&gt;
+  &lt;li&gt;See how to refine the EatingWhat application.&lt;/li&gt;
+  &lt;li&gt;Start training and explaining ECG deep-learning model using Pytorch.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;substitute-military-service-sms-day-64-1019&quot;&gt;Substitute Military Service (SMS) Day 64 (10/19)&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-happened-today-3&quot;&gt;What happened today?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Waking up at 6:00, I took bus from Taipei to Taoyuan, making myself prepared to the 64th day of SMS. However, there were no taxi to go to my working place. Since I need to arrive before 8:00, I decided to use Uber for the first time! A simplified but clean Tesla model helped me go to my working place. Although being a little late makes me nervous about others gossip, this was still a fresh experience.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Apart from usual daily works, I read 2 books today: Slash and The Witcher novel. The Slash book talked about finding happiness first before finding success. We need to manage and choose what pain do we want to take in order to find true happiness.
+    &lt;ul&gt;
+      &lt;li&gt;Thinking about &lt;strong&gt;What is the most important thing to do?&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;Be confident, curious and passionate!&lt;/li&gt;
+      &lt;li&gt;Subtract wisely to use time more wisely.&lt;/li&gt;
+      &lt;li&gt;Pain versus Suffering: Pain cannot be avoided, but suffering can be chosen.
+        &lt;ul&gt;
+          &lt;li&gt;Example: The lack of freedom in the SMS life is such a pain, but when you accept this pain, the suffering becomes nothing.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The Slash book also mentioned writing a journal to talk to yourself.
+    &lt;ul&gt;
+      &lt;li&gt;Try to express emotion with inner self.&lt;/li&gt;
+      &lt;li&gt;Compare with yourself.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-do-you-feel-today&quot;&gt;How do you feel today?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Though reading books can sometimes be sleepy, it still make times fly and feeling myself grown up mentally.&lt;/li&gt;
+  &lt;li&gt;Hopefully, smallblue and I can thrive together.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;substitute-military-service-sms-day-66-1021&quot;&gt;Substitute Military Service (SMS) Day 66 (10/21)&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-happened-today-4&quot;&gt;What happened today?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Today we encountered the spot check of medical records, which needs to copy the medical records and have doctors checked and stamped. However, the specific format was not clear at the time. The doctor and the 
+pharmacist did not explain the format very clearly. Therefore, we can only make some versions of checking.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The pharmacist kept saying we need to ask predecessors, but the spot check did not happened for a couple of months, the rest of us have little memory of how to do it. And the current SMS did not encounter this before.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This uncertainty let me practice how to think about the different possiblities and prepare for them.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;substitute-military-service-sms-day-67-1022&quot;&gt;Substitute Military Service (SMS) Day 67 (10/22)&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-happened-today-5&quot;&gt;What happened today?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The spot check has passed smoothly for now, we shall see in the couple of days.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;I have finished the Slash book and The Witcher Vol.2
+    &lt;ul&gt;
+      &lt;li&gt;The Slash book told the reader to plan schedule often and flexible, making a sence of accomplishment to motivate ourselves.&lt;/li&gt;
+      &lt;li&gt;For example:
+        &lt;ul&gt;
+          &lt;li&gt;Plan big milestones for this year, then based on the milestones, set month, week and even daily plans. It helps us to systematically accomplish what we want to do.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Therefore, I started to set goals during the rest of SMS.
+    &lt;ul&gt;
+      &lt;li&gt;In November:
+        &lt;ul&gt;
+          &lt;li&gt;Expand the food categories in the WhatToEat application.&lt;/li&gt;
+          &lt;li&gt;Train and evaluation pipeline set for ECG signal multi-class classification model (in Pytorch).&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;In December:
+        &lt;ul&gt;
+          &lt;li&gt;Use LIME or other interpretable methods to explain the ECG model.&lt;/li&gt;
+          &lt;li&gt;Improve the accuracy of the ECG model.&lt;/li&gt;
+          &lt;li&gt;Deploy the model in an web application like smart-brain (with front-end, back-end dockerized).&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;In January:
+        &lt;ul&gt;
+          &lt;li&gt;Start applying software engineer and machine learning engineer.&lt;/li&gt;
+          &lt;li&gt;Review “Cracking the Code Interview”.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;substitute-military-service-sms-day-70-1025&quot;&gt;Substitute Military Service (SMS) Day 70 (10/25)&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-happened-today-6&quot;&gt;What happened today?&lt;/h2&gt;
+
+&lt;p&gt;We made breakfast and lunch together. The cooking time was awesome and made me feel more certain that I want to be with her for the rest of my life!&lt;/p&gt;
+
+&lt;p&gt;I went to library to borrow some books including:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Muduo C++ about multi-thread web application
+    &lt;ul&gt;
+      &lt;li&gt;For learning web and C++, the goal along with reading this book is to build an multi-thread application.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Pytorch introduction
+    &lt;ul&gt;
+      &lt;li&gt;For famaliarize pytorch in order to build ECG model.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Clean Coder &amp;amp; Specification By Example
+    &lt;ul&gt;
+      &lt;li&gt;For learning more general software engineering.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Today I almost complete the web development Udemy course videos.
+The completion of it means that I am on my own way on Web development.
+The first thing to do is to refine my EatingWhat app, like:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Using React hooks&lt;/li&gt;
+  &lt;li&gt;Expand food categories&lt;/li&gt;
+  &lt;li&gt;Find serving food json objects other than using github repo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tomorrows-plan&quot;&gt;Tomorrow’s plan&lt;/h2&gt;
+
+&lt;h5 id=&quot;reading&quot;&gt;Reading:&lt;/h5&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Stoic&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Pytorch intro&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;The Clean Coder&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Liver image patent&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;side-project&quot;&gt;Side Project:&lt;/h5&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Incoporate React hook to EatingWhat.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Finish docker-compose for EatingWhat.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Start training ECG model using Pytorch lightning.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;substitute-military-service-sms-day-71-1026&quot;&gt;Substitute Military Service (SMS) Day 71 (10/26)&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-happened-today-7&quot;&gt;What happened today?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First time go to Taipei Veteran General Hospital to assist veterans to see the doctors.
+    &lt;ul&gt;
+      &lt;li&gt;Actually, we just sat in somewhere to read books in the morning.&lt;/li&gt;
+      &lt;li&gt;Except for Liver image patent, I read all the books I brought.&lt;/li&gt;
+      &lt;li&gt;I learned that:
+        &lt;blockquote&gt;
+          &lt;p&gt;Professionalism not only needs the skill but also the courage and responsibility to say “NO” to boss/client/colleague.&lt;/p&gt;
+        &lt;/blockquote&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Pytorch Tensor and Variable heirarchy.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;At work, you are solving employer’s problems. Off work, you still need to develop your own career.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;todays-progress--tomorrows-plan&quot;&gt;Today’s Progress &amp;amp; Tomorrow’s plan&lt;/h2&gt;
+
+&lt;h5 id=&quot;side-project-1&quot;&gt;Side Project:&lt;/h5&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Incoporate React hook to EatingWhat.
+    &lt;ul&gt;
+      &lt;li&gt;With Redux, the pattern still feel unfamiliar to me.&lt;/li&gt;
+      &lt;li&gt;The most error appeared was “Too many re-render”, so it is the main investigation point tomorrow.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Finish docker-compose for EatingWhat.
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Need a database for storing candidate food data.&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Need a server for handling fetching food data.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Start training ECG model using Pytorch lightning.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;substitute-military-service-sms-day-75-1029&quot;&gt;Substitute Military Service (SMS) Day 75 (10/29)&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-happened-today-8&quot;&gt;What happened today?&lt;/h2&gt;
+
+&lt;h2 id=&quot;todays-progress--plans&quot;&gt;Today’s Progress &amp;amp; Plans&lt;/h2&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Liver image patent flow chart: check difference of each block.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Mock interview x 1 (night).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;</content><author><name></name></author><category term="[&quot;Daily&quot;, &quot;SMS&quot;]" /><summary type="html">Substitute Military Service (SMS) Day 58 (10/13)</summary></entry><entry><title type="html">Substitute Military Service Week3 Day1</title><link href="https://haochunchang.github.io/daily/sms/2020/09/21/SMS_week3.html" rel="alternate" type="text/html" title="Substitute Military Service Week3 Day1" /><published>2020-09-21T00:00:00+00:00</published><updated>2020-09-21T00:00:00+00:00</updated><id>https://haochunchang.github.io/daily/sms/2020/09/21/SMS_week3</id><content type="html" xml:base="https://haochunchang.github.io/daily/sms/2020/09/21/SMS_week3.html">&lt;p&gt;Today is the first day of week 3 during my substitute military service.
+Back from a relaxing weekend with smallblue, I have to re-focus on my side projects.&lt;/p&gt;
+
+&lt;p&gt;Currently, my side project is a food recommendation application using React.
+The reason why I chose this direction is because thinking what to eat everyday is an everlasting
+problems.
+Moreover, I think along with machine learning, I still need to develop more skills as an software
+engineer.&lt;/p&gt;
+
+&lt;p&gt;Therefore, in this morning I utilized the breakfast time (with snacks brought from home) to keep
+going my udemy course - From Junior to Senior Web developer.
+Today’s progress was introducing asynchronous tests and “enzyme” (testing library for React
+components):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Asynchronous tests need to return an promise in order to evaluate the results.&lt;/li&gt;
+  &lt;li&gt;“Enzyme” provides API like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shallow, render, mount&lt;/code&gt; to wrap the JSX component. These wrappers
+can then be tested.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;In daytime, I was reading “Clean Code”. The chapter was describing writing clean code regrarding an
+system.
+It mentioned some important design principle such as:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Single Responsibility Principle (SRP)&lt;/li&gt;
+  &lt;li&gt;Inversion of Control Principle (including Dependecy Injection)&lt;/li&gt;
+  &lt;li&gt;Open-Closed Principle&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Though these principles seem distant to me since I did not have many development experience.
+They surely provided some guidance worth remember in my later career.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Around 17:20, I increased my running distance from 3km to 4km to push my limit.
+It was tedious and exhausted, but after finishing the running it felt soothingly confortable.&lt;/p&gt;
+
+&lt;p&gt;Hopefully, this exercise habit remains long enough for me.&lt;/p&gt;</content><author><name></name></author><category term="[&quot;Daily&quot;, &quot;SMS&quot;]" /><summary type="html">Today is the first day of week 3 during my substitute military service. Back from a relaxing weekend with smallblue, I have to re-focus on my side projects.</summary></entry><entry><title type="html">LeetCode Weekly Contest 160-Part I</title><link href="https://haochunchang.github.io/programming/2019/10/27/leetcode_contest_160_par1.html" rel="alternate" type="text/html" title="LeetCode Weekly Contest 160-Part I" /><published>2019-10-27T00:00:00+00:00</published><updated>2019-10-27T00:00:00+00:00</updated><id>https://haochunchang.github.io/programming/2019/10/27/leetcode_contest_160_par1</id><content type="html" xml:base="https://haochunchang.github.io/programming/2019/10/27/leetcode_contest_160_par1.html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The contest consists of 4 problems: one easy, two medium and one hard problem.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This is part 1, one easy and one medium problems.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;problem-1-find-positive-integer-solution-for-a-given-equation&quot;&gt;&lt;a href=&quot;https://leetcode.com/problems/find-positive-integer-solution-for-a-given-equation/&quot;&gt;Problem 1: Find Positive Integer Solution for a Given Equation&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Thoughts:
+    &lt;ul&gt;
+      &lt;li&gt;Since we only know that equation is constantly increasing, we just need to search x,y up to given z.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;My solution after seeing the discussion:
+    &lt;ul&gt;
+      &lt;li&gt;Runtime: 12ms&lt;/li&gt;
+      &lt;li&gt;Memory: 8.7 MB&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findSolution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CustomFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;customfunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;solutions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;customfunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;sol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;sol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                    
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;solutions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+        
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;solutions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;problem-2-circular-permutation-in-binary-representation&quot;&gt;&lt;a href=&quot;https://leetcode.com/problems/circular-permutation-in-binary-representation/&quot;&gt;Problem 2: Circular Permutation in Binary Representation&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First thought:
+    &lt;ul&gt;
+      &lt;li&gt;Depth-First search the possible binary tree.&lt;/li&gt;
+      &lt;li&gt;Each level of tree is one-digit away from parent.&lt;/li&gt;
+      &lt;li&gt;Too slow for this problems, but can be applied to other data types.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;First solution:
+    &lt;ul&gt;
+      &lt;li&gt;Runtime: 736 ms&lt;/li&gt;
+      &lt;li&gt;Memory: 74.5 MB&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;circularPermutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nw&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target_depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;found&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;found&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;found&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;found&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;nw&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target_depth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;nw&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rbegin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nw&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+                &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;found&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;current_depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;current_depth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve:
+    &lt;ul&gt;
+      &lt;li&gt;Use XOR operator and right shift operator to get the “gray-code”.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Solution:
+    &lt;ul&gt;
+      &lt;li&gt;Runtime: 176 ms&lt;/li&gt;
+      &lt;li&gt;Memory: 14.3 MB&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;circularPermutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// from https://leetcode.com/problems/circular-permutation-in-binary-representation/discuss/414203/JavaC%2B%2BPython-4-line-Gray-Code&lt;/span&gt;
+        
+        &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// first right shift and then XOR&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What I learn:
+    &lt;ul&gt;
+      &lt;li&gt;Right shift operator is executed first and then XOR.&lt;/li&gt;
+      &lt;li&gt;(1 « n) means 2^n.&lt;/li&gt;
+      &lt;li&gt;Gray code of n bits can be constructed from Gray code of n-1 bits by copying two times in different orders and prepend with ‘0’ to the first half, ‘1’ to the second half.&lt;/li&gt;
+      &lt;li&gt;Why using (XOR i) and (XOR i»1) can produce the gray code?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="[&quot;Programming&quot;]" /><summary type="html">The contest consists of 4 problems: one easy, two medium and one hard problem.</summary></entry><entry><title type="html">LeetCode Weekly Contest 159-Part II</title><link href="https://haochunchang.github.io/programming/2019/10/26/first_leetcode_contest_part2.html" rel="alternate" type="text/html" title="LeetCode Weekly Contest 159-Part II" /><published>2019-10-26T00:00:00+00:00</published><updated>2019-10-26T00:00:00+00:00</updated><id>https://haochunchang.github.io/programming/2019/10/26/first_leetcode_contest_part2</id><content type="html" xml:base="https://haochunchang.github.io/programming/2019/10/26/first_leetcode_contest_part2.html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The contest consists of 4 problems: one easy, two medium and one hard problem.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This is part 2, one medium and one hard problems.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I was able to finish this problems after read through other’s solution…QAQ.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;problem-3-replace-the-substring-for-balanced-string&quot;&gt;&lt;a href=&quot;https://leetcode.com/problems/replace-the-substring-for-balanced-string/&quot;&gt;Problem 3: Replace the Substring for Balanced String&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve:
+    &lt;ol&gt;
+      &lt;li&gt;First initialize with: character count - (length / 4).&lt;/li&gt;
+      &lt;li&gt;Maintain two pointers to indicate interval of substring that needs to be replaced.&lt;/li&gt;
+      &lt;li&gt;Increment right pointer and decrease count of pointed char until there are no char count &amp;gt; 0.&lt;/li&gt;
+      &lt;li&gt;Increment left pointer and add back count of pointed char until there are no char count &amp;lt;= 0.&lt;/li&gt;
+      &lt;li&gt;Repeat 3&amp;amp;4. Terminate when right pointer reach the end of string.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;My solution after seeing the discussion:
+    &lt;ul&gt;
+      &lt;li&gt;Runtime: 32ms&lt;/li&gt;
+      &lt;li&gt;Memory: 10 MB&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;balancedString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;unordered_map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({{&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'Q'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'W'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'E'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'R'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}});&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What I learn:
+    &lt;ul&gt;
+      &lt;li&gt;Since we need to find consecutive interval(substring) to replace, we need to think of a sliding window.&lt;/li&gt;
+      &lt;li&gt;Since we can replace any char in the window, we need to focus on the char count outside the window.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;problem-4-maximum-profit-in-job-scheduling&quot;&gt;&lt;a href=&quot;https://leetcode.com/problems/maximum-profit-in-job-scheduling/&quot;&gt;Problem 4: Maximum Profit in Job Scheduling&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First think of dynamic programming, and I know we need a container to record max profit up to that time.&lt;/li&gt;
+  &lt;li&gt;But I cannot construct the formula all by myself.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I first try using vector and vector[i] is the max profit upto ith smallest endTime.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How to solve: use map&amp;lt;endTime, max profit&amp;gt; to record
+    &lt;ul&gt;
+      &lt;li&gt;Sort jobs by endTime.&lt;/li&gt;
+      &lt;li&gt;For each job, find the first record whose endTime &amp;gt; job startTime.
+        &lt;ul&gt;
+          &lt;li&gt;Get the previous compatible profit + current job profit as &lt;strong&gt;P&lt;/strong&gt;.&lt;/li&gt;
+          &lt;li&gt;Compare &lt;strong&gt;P&lt;/strong&gt; with current max profit with latest endTime.&lt;/li&gt;
+          &lt;li&gt;If &lt;strong&gt;P&lt;/strong&gt; is larger, record new &amp;lt;endTime, max profit&amp;gt; to the map.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;My solution:
+    &lt;ul&gt;
+      &lt;li&gt;Runtime: 216ms&lt;/li&gt;
+      &lt;li&gt;Memory: 32.1 MB&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jobScheduling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;startTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;profit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_profit&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}};&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// endTime, profit&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;startTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;startTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;profit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]});&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;job&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;job&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+            &lt;span class=&quot;cm&quot;&gt;/* 1. max_profit.upper_bound(job[1]): find the first endTime that &amp;gt; job startTime
+               2. prev: get previous iterator of 1.
+               3. -&amp;gt;second: get its profit
+            ===&amp;gt; Previous compatible profit + job[2] (new task profit)
+            */&lt;/span&gt;
+            &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_profit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upper_bound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;job&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;job&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;// compare current profit to current maximum profit&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_profit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rbegin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+                &lt;span class=&quot;c1&quot;&gt;// New job has larger endTime, only add to map if profit more.&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;max_profit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;job&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_profit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rbegin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What I learn:
+    &lt;ul&gt;
+      &lt;li&gt;From the discussion, this is similar to the knapsack problem.&lt;/li&gt;
+      &lt;li&gt;Needs to utilize STL binary search function to get upper/lower bound of some value.
+        &lt;ul&gt;
+          &lt;li&gt;Use upper_bound to find previous compatible tasks. (if all tasks are compatible, then return the last.)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;map if the OrderedDict in python, its keys are ordered as they are inserted.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Wrapping up:
+    &lt;ul&gt;
+      &lt;li&gt;The goal for participating the weekly contest is to motivate me to improve my data structure and algorithm skills.&lt;/li&gt;
+      &lt;li&gt;Data structure and algorithms are essential for programmers.&lt;/li&gt;
+      &lt;li&gt;Hope I can learn more and improve more from these contests!!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="[&quot;Programming&quot;]" /><summary type="html">The contest consists of 4 problems: one easy, two medium and one hard problem.</summary></entry><entry><title type="html">LeetCode Weekly Contest 159-Part I</title><link href="https://haochunchang.github.io/programming/2019/10/20/first_leetcode_contest_part1.html" rel="alternate" type="text/html" title="LeetCode Weekly Contest 159-Part I" /><published>2019-10-20T00:00:00+00:00</published><updated>2019-10-20T00:00:00+00:00</updated><id>https://haochunchang.github.io/programming/2019/10/20/first_leetcode_contest_part1</id><content type="html" xml:base="https://haochunchang.github.io/programming/2019/10/20/first_leetcode_contest_part1.html">&lt;ul&gt;
+  &lt;li&gt;The contest consists of 4 problems: one easy, two medium and one hard problem.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;problem-1-check-if-it-is-a-straight-line&quot;&gt;&lt;a href=&quot;https://leetcode.com/problems/check-if-it-is-a-straight-line/&quot;&gt;Problem 1: Check If It Is a Straight Line&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Description: You are given an array coordinates, coordinates[i] = [x, y], where [x, y] represents the coordinate of a point. Check if these points make a straight line in the XY plane.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Needs aware of:
+    &lt;ul&gt;
+      &lt;li&gt;Vertical and horizontal lines.&lt;/li&gt;
+      &lt;li&gt;Data type in number division (int / int =&amp;gt; int, needs to cast to double in C++).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;My solution:
+    &lt;ul&gt;
+      &lt;li&gt;Runtime: 12ms&lt;/li&gt;
+      &lt;li&gt;Memory: 10.2 MB&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;checkStraightLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coordinates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coordinates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coordinates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coordinates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coordinates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vertical&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;horizontal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;vertical&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;horizontal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;slope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_dx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_dy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_slope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coordinates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;test_dx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coordinates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coordinates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;test_dy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coordinates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coordinates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vertical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_dx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;horizontal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_dy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;test_slope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_dx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_slope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;problem-2-remove-sub-folders-from-the-filesystem&quot;&gt;&lt;a href=&quot;https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/&quot;&gt;Problem 2: Remove Sub-Folders from the Filesystem&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Description: Given a list of folders, remove all sub-folders in those folders and return in any order the folders after removing.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;First try solution:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Construct the whole filesystem tree with node as fullpath, then depth-first-search to collect non-subfolders.&lt;/li&gt;
+      &lt;li&gt;This use up a lot of memory, but have some kind of tree for other use?&lt;/li&gt;
+      &lt;li&gt;Runtime: 880 ms&lt;/li&gt;
+      &lt;li&gt;Memory: 235.9 MB&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tree&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;unordered_map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;removeSubfolders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;unordered_map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;real_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//vector&amp;lt;Tree&amp;gt; trees;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Tree&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// parse every folder into vector of trees&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        
+        &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sub_folders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        
+        &lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prev_slash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_slash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_folder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_slash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sub_folders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next_folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next_slash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;npos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            
+            &lt;span class=&quot;n&quot;&gt;prev_slash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_slash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;next_slash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prev_slash&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;next_folder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_slash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            
+            &lt;span class=&quot;n&quot;&gt;sub_folders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next_folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//cout &amp;lt;&amp;lt; &quot;adding: &quot; &amp;lt;&amp;lt; next_folder &amp;lt;&amp;lt; &quot; to real_name\n&quot;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;real_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next_folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;// construct into tree&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub_folders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sub_folders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//cout &amp;lt;&amp;lt; &quot;inserting: &quot; &amp;lt;&amp;lt; sub_folders[j+1] &amp;lt;&amp;lt; &quot; to &quot; &amp;lt;&amp;lt; sub_folders[j] &amp;lt;&amp;lt; &quot;\n&quot;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub_folders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub_folders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub_folders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub_folders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//cout &amp;lt;&amp;lt; &quot;pushing: &quot; &amp;lt;&amp;lt; *it &amp;lt;&amp;lt; &quot; to stack\n&quot;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        
+        &lt;span class=&quot;cm&quot;&gt;/*cout &amp;lt;&amp;lt; &quot;Stack: &quot;;
+        for (auto it = stack.begin(); it != stack.end(); it++) {
+            cout &amp;lt;&amp;lt; *it &amp;lt;&amp;lt; &quot; &quot;;
+        }
+        cout &amp;lt;&amp;lt; &quot;\n&quot;;*/&lt;/span&gt;
+        
+        &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;real_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// for all children of 'now'&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;c1&quot;&gt;//cout &amp;lt;&amp;lt; &quot;pushing: &quot; &amp;lt;&amp;lt; *it &amp;lt;&amp;lt; &quot; to stack\n&quot;;&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;//cout &amp;lt;&amp;lt; &quot;\n&quot;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Needs aware of: (after looking at solutions from other.)
+    &lt;ul&gt;
+      &lt;li&gt;Folder paths can be sorted by string length, then binary search a target string will find the location of the target’s parent (right before target).&lt;/li&gt;
+      &lt;li&gt;A String-kind problem.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Faster solution (from &lt;a href=&quot;https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/discuss/408949/C%2B%2B-Short-sorting-O(nlogn)&quot;&gt;discussion&lt;/a&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Runtime: 244 ms&lt;/li&gt;
+      &lt;li&gt;Memory: 35.7 MB&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;removeSubfolders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iterator&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lower_bound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;compare&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Final Notes:
+    &lt;ul&gt;
+      &lt;li&gt;Tree/Graph data structure needs to be practiced more.&lt;/li&gt;
+      &lt;li&gt;Needs to review problem types more carefully.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;part2-will-cover-the-other-two-problems&quot;&gt;Part2 will cover the other two problems.&lt;/h3&gt;</content><author><name></name></author><category term="[&quot;Programming&quot;]" /><summary type="html">The contest consists of 4 problems: one easy, two medium and one hard problem.</summary></entry><entry><title type="html">Google ML Jam Course 1: How google does Machine learning?</title><link href="https://haochunchang.github.io/deep-learning/2019/09/01/how_google_does_ml.html" rel="alternate" type="text/html" title="Google ML Jam Course 1: How google does Machine learning?" /><published>2019-09-01T00:00:00+00:00</published><updated>2019-09-01T00:00:00+00:00</updated><id>https://haochunchang.github.io/deep-learning/2019/09/01/how_google_does_ml</id><content type="html" xml:base="https://haochunchang.github.io/deep-learning/2019/09/01/how_google_does_ml.html">&lt;h3 id=&quot;module-12&quot;&gt;Module 1&amp;amp;2&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Model: math function&lt;/li&gt;
+  &lt;li&gt;Supervised Learning: adjust model to match output and label&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;input, label –&amp;gt; model –&amp;gt; output&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ML have two stages: training and inference
+    &lt;ul&gt;
+      &lt;li&gt;Both are important for ML be useful.&lt;/li&gt;
+      &lt;li&gt;Inference takes inputs that model has not seen.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;replace heuristics with model&lt;/li&gt;
+  &lt;li&gt;starts with heuristics but use ML when have data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;use-case-questions&quot;&gt;Use case questions:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;If the use case was an ML problem….
+    &lt;ol&gt;
+      &lt;li&gt;What is being predicted?&lt;/li&gt;
+      &lt;li&gt;What data is needed?&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Now imagine the ML problem is a question of software:
+    &lt;ol&gt;
+      &lt;li&gt;What is the API for the problem during prediction?
+        &lt;ul&gt;
+          &lt;li&gt;Inputs &amp;amp; Outputs&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Who will use this service? How are they doing it today?&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Cast it in the framework of a data problem. What are some key actions to collect, analyze, predict, and react to the data/predictions
+    &lt;ol&gt;
+      &lt;li&gt;What data are we collecting?&lt;/li&gt;
+      &lt;li&gt;What data are we analyzing?&lt;/li&gt;
+      &lt;li&gt;What data are we predicting?&lt;/li&gt;
+      &lt;li&gt;What data are we reacting to?&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ML is scaling beyond hand-written rules.
+Simple model + more data &amp;gt; Complex model + less data&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Don’t jump into ML! Start with manual data analysis to know your data!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;training-serving-skew&quot;&gt;Training-serving skew&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Batch data in training v.s. streaming data in prediction&lt;/li&gt;
+  &lt;li&gt;The pipeline should handle both to get the same input for the model.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Fail fast and iterate!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;ml-business-module-3&quot;&gt;ML business (Module 3)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Defining KPI’s&lt;/li&gt;
+  &lt;li&gt;Collecting data&lt;/li&gt;
+  &lt;li&gt;Building infra&lt;/li&gt;
+  &lt;li&gt;Optimization&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Integration&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Effort Allocation
+    &lt;ul&gt;
+      &lt;li&gt;Top1: Collecting data: to gather more good-quality data to serve this problem.&lt;/li&gt;
+      &lt;li&gt;Top2: Building infra: make sure to serve smoothly to users.&lt;/li&gt;
+      &lt;li&gt;Top3: Integration&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;What is the application for?
+    &lt;ul&gt;
+      &lt;li&gt;Is your ML is improving the real world?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ML value comes along the way.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;the-generic-feed-back-loop&quot;&gt;The generic feed-back loop&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-flow&quot;&gt;st=&amp;gt;start: inputs 
+e=&amp;gt;end: done
+process=&amp;gt;operation: Process
+output=&amp;gt;operation: Output
+ig=&amp;gt;operation: Insight generation (Big Data)
+tune=&amp;gt;operation: Tuning (ML)
+cond=&amp;gt;condition: Good enough?
+
+st-&amp;gt;process-&amp;gt;output-&amp;gt;ig-&amp;gt;tune-&amp;gt;cond
+cond(yes)-&amp;gt;e
+cond(no)-&amp;gt;process
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Process:
+    &lt;ul&gt;
+      &lt;li&gt;Individual: prototyping, trying new ideas.&lt;/li&gt;
+      &lt;li&gt;Delegation: Gently increase people involved, formalize the process.&lt;/li&gt;
+      &lt;li&gt;Digitization: Automate repetitive parts. Need IT + ML to both succeed.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Insight generation (Analytics):
+    &lt;ul&gt;
+      &lt;li&gt;Measure data and reflect the product to tune it.&lt;/li&gt;
+      &lt;li&gt;Redefine success.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Tuning: Automated feedback that is faster than many humans.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;inclusive-ml-fairness-of-ml-module-4&quot;&gt;Inclusive ML: fairness of ML (Module 4)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Interactive bias: user interactions may inclined to interact with one over the other.&lt;/li&gt;
+  &lt;li&gt;Latent bias: More male scientists than female ones during history&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Selection bias: do you sure data represent everyone?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Confusion matrix: False Positive v.s. False negative
+    &lt;ul&gt;
+      &lt;li&gt;Select the appropriate metric according to the problem (Avoid FP or avoid FN is more important?)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Equality of oppurtunity: equal True positive rate for each groups.&lt;/li&gt;
+  &lt;li&gt;A data visualization tool: Facets&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;python-notebooks-in-the-cloud&quot;&gt;Python notebooks in the Cloud&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Serverless service:
+    &lt;ul&gt;
+      &lt;li&gt;Jupyter notebooks: DataLab.&lt;/li&gt;
+      &lt;li&gt;BigQuery: aggregate big dataset using SQL.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Google pre-trained APIs:
+    &lt;ul&gt;
+      &lt;li&gt;vision&lt;/li&gt;
+      &lt;li&gt;intelligence (for image/video)&lt;/li&gt;
+      &lt;li&gt;speech&lt;/li&gt;
+      &lt;li&gt;translation&lt;/li&gt;
+      &lt;li&gt;natural-language&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;thoughts&quot;&gt;Thoughts&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It is cool that google shared its procedure of transforming to a AI-first company by going through the five steps.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="[&quot;Deep-Learning&quot;]" /><summary type="html">Module 1&amp;amp;2</summary></entry><entry><title type="html">Texture Classification with CNN</title><link href="https://haochunchang.github.io/deep-learning/2019/02/26/texture.html" rel="alternate" type="text/html" title="Texture Classification with CNN" /><published>2019-02-26T00:00:00+00:00</published><updated>2019-02-26T00:00:00+00:00</updated><id>https://haochunchang.github.io/deep-learning/2019/02/26/texture</id><content type="html" xml:base="https://haochunchang.github.io/deep-learning/2019/02/26/texture.html">&lt;h2 id=&quot;this-note-is-based-on-a-great-survey&quot;&gt;This note is based on &lt;a href=&quot;https://arxiv.org/pdf/1801.10324v2.pdf&quot;&gt;a great survey&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Texture Representation:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#Bag-of-Word-based-methods-(BoW)&quot;&gt;BoW-based representation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#Convolutional-Neural-Network-based-methods&quot;&gt;CNN-based representation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#Attribute-based-methods&quot;&gt;Attribute-based representation&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Texture-Datasets&quot;&gt;Texture Datasets&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;texture-representation&quot;&gt;Texture Representation&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Contrast to object classification, the global spatial information is less important.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;bag-of-word-based-methods-bow&quot;&gt;Bag-of-Word based methods (BoW)&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/texture-clf/BoW-pipeline.png&quot; alt=&quot;BoW pipeline&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Local Patch Extraction&lt;/li&gt;
+  &lt;li&gt;Local Patch Representation (Feature Descriptors)
+    &lt;ul&gt;
+      &lt;li&gt;Ideal: distinctive, robust to variations&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Codebook Generation
+    &lt;ul&gt;
+      &lt;li&gt;Find a set of prototype features from training data.&lt;/li&gt;
+      &lt;li&gt;Like words, phrases in languages. (Similar to dimension reduction)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Feature Encoding
+    &lt;ul&gt;
+      &lt;li&gt;Assign local representation to some prototype features.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Feature Pooling&lt;/li&gt;
+  &lt;li&gt;Feature Classification&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;convolutional-neural-network-based-methods&quot;&gt;Convolutional Neural Network based methods&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The survey classified the methods into 3 categories:
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#Pre-trained-Generic-CNN-models&quot;&gt;Using pre-trained generic CNN models&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#Fine-tuned-CNN-models&quot;&gt;Using fine-tuned CNN models&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#Texture-specific-CNN-models&quot;&gt;Using texture-specific CNN models&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;pre-trained-generic-cnn-models&quot;&gt;Pre-trained Generic CNN models&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CNN = convolution + non-linear activation + pooling
+    &lt;ul&gt;
+      &lt;li&gt;Related to LBP, Random Projection (RP), etc.&lt;/li&gt;
+      &lt;li&gt;CNN-extracted features can be encoded by BoW-based method.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;fine-tuned-cnn-models&quot;&gt;Fine-tuned CNN models&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/texture-clf/Finetune-CNN.png&quot; alt=&quot;Fine-tuned CNN&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1601.02919.pdf&quot;&gt;Texture CNN (T-CNN)&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Energy Layer: average activation ouput for each feature map of the last conv layers.
+        &lt;ul&gt;
+          &lt;li&gt;1 value per feature map&lt;/li&gt;
+          &lt;li&gt;Similar to energy response of a filter bank.&lt;/li&gt;
+          &lt;li&gt;Example: 256x27x27 (channel x height x width) \(\rightarrow\) 256x1&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Concat: GlobalAveragePooling(intermediate conv.) and last conv.&lt;/li&gt;
+      &lt;li&gt;Insight:
+        &lt;ul&gt;
+          &lt;li&gt;Fine-tune a texture-centric pretrained network performs better than that pretrained with object-centric dataset.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1504.07889.pdf&quot;&gt;Bilinear CNN (BCNN)&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Replace FC layers with &lt;strong&gt;orderless bilinear pooling&lt;/strong&gt; layer. (Matrix outer product + aveage pooling)
+        &lt;ul&gt;
+          &lt;li&gt;\(f(l, I)\): Feature function, l = locations, I = image&lt;/li&gt;
+          &lt;li&gt;
+\[f: L \times I \rightarrow R^{K\times D}\]
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Cost: High dimenstional features \(\rightarrow\) need lots of training data&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+\[bilinear(l, I, f_A, f_B) = f_A(l, I)^{T}f_B(l, I)\]
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1511.06062.pdf&quot;&gt;Compact BCNN&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;To reduce the BCNN feature dimensions: Approximate the inner product of 2 bilinear features.
+        &lt;ul&gt;
+          &lt;li&gt;Random Maclaurin Projection or Tensor Sketch Projection&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;To reduce time, represent the bilinear features as a matrix and applied a low rank bilinear classifier
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1611.05109.pdf&quot;&gt;Ref&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://openaccess.thecvf.com/content_cvpr_2017/papers/Dai_FASON_First_and_CVPR_2017_paper.pdf&quot;&gt;FASON (First And Second Order information fusion Network)&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;T-CNN + Compact BCNN&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1511.07247.pdf&quot;&gt;NetVLAD&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;VLAD = Vector of Locally Aggregated Descriptors&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+\[V(j, k) = \sum{N}{i=1}a_k(x_i)(x_i(j) - c_k(j))\]
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1612.02844.pdf&quot;&gt;Deep Texture Encoding Network (DeepTEN)&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Residual encoding layer:
+    &lt;ul&gt;
+      &lt;li&gt;Each input \(x_i\) is assigned a weight to the codewords.&lt;/li&gt;
+      &lt;li&gt;Contrast to soft-weight assignment, the smoothing factor for each cluster is learnable&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Residual encoding: (Output = \(e_k\) for each codeword \(c_k\)):&lt;/li&gt;
+&lt;/ul&gt;
+
+\[r_{ik} = x_i - c_k\]
+
+\[e_k = \sum{N}{i=1}e_{ik} = \sum{N}{i=1}a_{ik}r_{ik}\]
+
+&lt;ul&gt;
+  &lt;li&gt;Soft-weight assignment (\(a_{ik}\))
+    &lt;ul&gt;
+      &lt;li&gt;\(\beta\) is the smoothing factor&lt;/li&gt;
+      &lt;li&gt;\(\beta \rightarrow s_k\) where \(s_k\) is learnable&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+\[a_{ik} = \frac{exp(-\beta \|r_{ik}\|^2)}{\sum{K}{j=1}exp(-\beta \|r_{ik}\|^2)}\]
+
+&lt;h5 id=&quot;texture-specific-cnn-models&quot;&gt;Texture-specific CNN models&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/texture-clf/Texture-specific.png&quot; alt=&quot;Texture-specific CNN&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.di.ens.fr/~mallat/papiers/Bruna-Mallat-Pami-Scat.pdf&quot;&gt;ScatNet&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Pre-determined convolution layers (Example: Haar, Gabor wavelets)
+        &lt;ul&gt;
+          &lt;li&gt;Translation-invariant, also extends to rotation and scale invariance.&lt;/li&gt;
+          &lt;li&gt;No need to learn, but expensive when extracting features.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Explore theoretical aspect of CNN.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1404.3606.pdf&quot;&gt;PCANet&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Use trained PCA filters.&lt;/li&gt;
+      &lt;li&gt;Variations: RandNet, LDANet&lt;/li&gt;
+      &lt;li&gt;Faster feature extraction than ScatNet. Weaker invariance and performance.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;attribute-based-methods&quot;&gt;Attribute based methods&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Allows more detail description of an image:
+    &lt;ul&gt;
+      &lt;li&gt;Like: spotted, striated, striped, etc.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Issues:
+    &lt;ul&gt;
+      &lt;li&gt;Need a unified vocabulary for describing texture attribure.&lt;/li&gt;
+      &lt;li&gt;Benchmark dataset annotated by semantic attriburte.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Studies that characterized texture attribute:
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;Tamura &lt;em&gt;et al.&lt;/em&gt;&lt;/a&gt;: coarseness, contrast, directionality, line-likeness, regularity and roughness&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;Amadasun and King&lt;/a&gt;: coarseness, contrast, business, complexity, and strength (refine 1.)&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;Matthews &lt;em&gt;et al.&lt;/em&gt;&lt;/a&gt;: 11 commonly-used attributes by using a single adjective. (Relative comparison)&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;texture-datasets&quot;&gt;Texture Datasets&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/texture-clf/Dataset.png&quot; alt=&quot;Summary&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="[&quot;Deep-Learning&quot;]" /><summary type="html">This note is based on a great survey</summary></entry><entry><title type="html">Convolutional Neural Network</title><link href="https://haochunchang.github.io/deep-learning/2018/12/13/cnn.html" rel="alternate" type="text/html" title="Convolutional Neural Network" /><published>2018-12-13T00:00:00+00:00</published><updated>2018-12-13T00:00:00+00:00</updated><id>https://haochunchang.github.io/deep-learning/2018/12/13/cnn</id><content type="html" xml:base="https://haochunchang.github.io/deep-learning/2018/12/13/cnn.html">&lt;h2 id=&quot;this-is-a-note-of-cnn-model-architectures&quot;&gt;This is a note of CNN model architectures.&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;For what is Convolution Neural Network (CNN), I recommend you to first read &lt;a href=&quot;http://cs231n.github.io/convolutional-networks/&quot;&gt;this&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;image-classification&quot;&gt;Image Classification&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;There are pre-trained models trained on ImageNet in &lt;a href=&quot;https://keras.io/applications/&quot;&gt;keras.applications&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Pre-trained models are useful for transfer learning.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;inception-googlenet&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1409.4842.pdf&quot;&gt;Inception (GoogLeNet)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/Inception.png&quot; alt=&quot;Inception&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Inception module: Various sizes of feature maps in parallel.
+    &lt;ul&gt;
+      &lt;li&gt;Useful in localization&lt;/li&gt;
+      &lt;li&gt;Main Idea:
+        &lt;blockquote&gt;
+          &lt;p&gt;&lt;em&gt;Finding out how an optimal local sparse structure in a convolutional vision network can be approximated and covered by readily available dense components.&lt;/em&gt;&lt;/p&gt;
+        &lt;/blockquote&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Use 1x1 convolution to reduce dimension.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;inceptionv2&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1512.00567v3.pdf&quot;&gt;InceptionV2&lt;/a&gt;&lt;/h5&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Factorized Convolution&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Assymetric Convolution&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/images/cnn/InceptionV2_block.png&quot; alt=&quot;inceptionV2_block&quot; /&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/images/cnn/InceptionV2_block2.png&quot; alt=&quot;inceptionV2_block2&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;General Design Principles:
+    &lt;ol&gt;
+      &lt;li&gt;Avoid representational bottlenecks: avoid extreme compression to info. loss&lt;/li&gt;
+      &lt;li&gt;Increase the activation per tile in CNN: train faster&lt;/li&gt;
+      &lt;li&gt;Spatial aggregation on lower dim embed: Maybe adjacent units have strong correlation.&lt;/li&gt;
+      &lt;li&gt;Balance the width and the depth of the network.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Factorization of convolutions:
+    &lt;ul&gt;
+      &lt;li&gt;Replace 5x5 conv by two 3x3 convs. (Exploit translation invariance again)&lt;/li&gt;
+      &lt;li&gt;Replace 3x3 conv by 3x1 and 1x3 convs. (nxn \(\rightarrow\) nx1 and 1xn)&lt;/li&gt;
+      &lt;li&gt;Works well on m x m feature maps (\(m = 12\sim 20\))&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Efficiently reduce grid size:
+    &lt;ul&gt;
+      &lt;li&gt;Convolution and Pooling done seperately and concat back.
+  &lt;img src=&quot;/assets/images/cnn/InceptionV2_reduce.png&quot; alt=&quot;reduce_grid&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Label-smoothing regularization (LSR): Avoid model to assign labels too confidently
+    &lt;ul&gt;
+      &lt;li&gt;x / y = training example / label&lt;/li&gt;
+      &lt;li&gt;k = labels, u(k) = a fixed distribution (e.g. u(k) = 1/K)&lt;/li&gt;
+      &lt;li&gt;Original label distribution: \(q(k\|x) = \delta_{k,y}\)&lt;/li&gt;
+      &lt;li&gt;Smoothed label distribution: \(q'(k) = (1 - \epsilon)\delta_{k,y} + \epsilon u(k)\)
+        &lt;ul&gt;
+          &lt;li&gt;Cross-entropy loss = \(H(q', p) = (1 - \epsilon)H(q, p) + \epsilon H(u, p)\)&lt;/li&gt;
+          &lt;li&gt;\(H(u, p)\) can be captured by &lt;a href=&quot;https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence&quot;&gt;KL divergence&lt;/a&gt;.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;resnet&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1512.03385v1.pdf&quot;&gt;ResNet&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/ResNet.png&quot; alt=&quot;Residual Network&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Residual operation for reusing feature maps.&lt;/li&gt;
+  &lt;li&gt;Motivation: Deeper network produces &lt;strong&gt;higher&lt;/strong&gt; training error \(\rightarrow\) Degradation.&lt;/li&gt;
+  &lt;li&gt;Core building block: (\(W_s\) is a linear projection to match dimensions)
+\(y = F(x, {W_i}) + W_sx\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;densenet&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1608.06993v5.pdf&quot;&gt;DenseNet&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/DenseNet.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/liuzhuang13/DenseNet&quot;&gt;Github&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Densely-connected convolutional layers:
+    &lt;ul&gt;
+      &lt;li&gt;Receive concatenation of feature maps from all preceding layers.&lt;/li&gt;
+      &lt;li&gt;For \(l^{th}\) layer, the output \(x_l=H_l([x_0, x_1,..., x_{l-1}])\)&lt;/li&gt;
+      &lt;li&gt;Cannot perform pooling in Dense-connected blocks.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Advantages:
+    &lt;ul&gt;
+      &lt;li&gt;Universal access of feature maps within Dense blocks.&lt;/li&gt;
+      &lt;li&gt;Can reduce number of feature maps by 1x1 conv between Dense blocks.&lt;/li&gt;
+      &lt;li&gt;Deep supervision, Feature reusage, Network compression.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mobilenet&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1704.04861.pdf&quot;&gt;MobileNet&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/MobileNet.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Essence:
+    &lt;blockquote&gt;
+      &lt;p&gt;&lt;em&gt;The MobileNet model is based on depthwise separable convolutions which is a form of factorized convolutions which factorize a standard convolution into a &lt;strong&gt;depthwise convolution&lt;/strong&gt; and a 1×1 convolution called a &lt;strong&gt;pointwise convolution&lt;/strong&gt;.&lt;/em&gt;&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Seprate standard convolutional layer into 2 layers (With BatchNormalization and ReLU for layer outputs)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Let:
+    &lt;ul&gt;
+      &lt;li&gt;\(D_{F/G}\) = spatial dimention of feature map \(F/G\)&lt;/li&gt;
+      &lt;li&gt;\(D_K\) = spatial dimention of kernel \(K\)&lt;/li&gt;
+      &lt;li&gt;\(M\) = number of input channel, \(N\) = number of output channel&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Standard Convolution
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;Assuming stride=1 and padding
+\(G_{k,l,n} = \sum_{i,j,m}{K_{i,j,m,n}F_{ {k+i-1},{l+j-1},m} }\)
+\(i=row, j=col, m=input\space channel, n=output\space channel\)&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Parameter size of \(K = D_K\times D_K\times M\times N\)&lt;/li&gt;
+      &lt;li&gt;Computation cost = \(D_K\cdot D_K\cdot M\cdot N\cdot D_F\cdot D_F\)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Depthwise separable Convolution = Depthwise &amp;amp; Pointwise convolution
+    &lt;ul&gt;
+      &lt;li&gt;Depthwise convolutions: 1 filter per input channel
+\(\hat{G}_{k,l,m} = \sum_{i,j}{\hat{K}_{i,j,m}F_{ {k+i-1},{l+j-1},m} }\)
+        &lt;ul&gt;
+          &lt;li&gt;Parameter size of \(\hat{K} = D_K\times D_K\times M\)&lt;/li&gt;
+          &lt;li&gt;Computation cost = \(D_K\cdot D_K\cdot M\cdot D_F\cdot D_F\)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Pointwise convolutions = 1x1 convolution
+        &lt;ul&gt;
+          &lt;li&gt;Computation const = \(M\cdot N\cdot D_F\cdot D_F\)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Further reduction of cost:
+        &lt;ul&gt;
+          &lt;li&gt;Width parameter: \(0 &amp;lt; \alpha &amp;lt;= 1\)&lt;/li&gt;
+          &lt;li&gt;Resolution parameter: \(0 &amp;lt; \rho &amp;lt; =1\)&lt;/li&gt;
+          &lt;li&gt;Computation const = 
+\(D_K\cdot D_K\cdot \alpha M\cdot \rho D_F\cdot \rho D_F + \alpha M\cdot \alpha N\cdot \rho D_F\cdot \rho D_F\)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;mobilenet_v2&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1801.04381v3.pdf&quot;&gt;MobileNet_v2&lt;/a&gt;&lt;/h5&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Overall Architecture&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Inverted Residual&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/images/cnn/MobileNetV2.png&quot; alt=&quot;MobileNetV2&quot; /&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/images/cnn/InvertedResidual.png&quot; alt=&quot;invertedResidual&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Main contribution: inverted residual with linear bottleneck&lt;/li&gt;
+  &lt;li&gt;Linear bottleneck:
+    &lt;ul&gt;
+      &lt;li&gt;Assume the “manifold of interest” lies in a low-dimensional subspace of the input space.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Bottleneck Residual Block (\(F(x) = [A\circ N\circ B]x\)): Composition of 3 operators
+    &lt;ul&gt;
+      &lt;li&gt;Linear transformation: \(A: R^{s\times s\times k} \rightarrow R^{s\times s\times n}\)&lt;/li&gt;
+      &lt;li&gt;Non-linear &lt;strong&gt;per channel&lt;/strong&gt;: \(N: R^{s\times s\times n} \rightarrow R^{ {s}'\times {s}'\times n}\)
+        &lt;ul&gt;
+          &lt;li&gt;In this paper: \(N = ReLU6\circ dwise\circ ReLU6\)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Linear transformation: \(B: R^{ {s}'\times {s}'\times n} \rightarrow R^{ {s}'\times {s}'\times {k}'}\)&lt;/li&gt;
+      &lt;li&gt;Represent inner tensor \(I\) as concatenation of \(t\) tensors of size \(n/t\)
+\(F(x) = \sum^t_{i=1}(A_i\circ N\circ B_i)(x)\)&lt;/li&gt;
+      &lt;li&gt;Get improvement because of
+        &lt;ol&gt;
+          &lt;li&gt;Inner transformation is per-channel.&lt;/li&gt;
+          &lt;li&gt;Consecutive non-per-channel operators have significanct \(\frac{input\space size}{output\space size}\).&lt;/li&gt;
+          &lt;li&gt;Recommended \(t = 2\sim 5\) for avoiding cache miss in matrix multiplication.&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;neural-arichitecture-search-nasnet&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1707.07012v4.pdf&quot;&gt;Neural Arichitecture Search (NASNet)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/NASNet.png&quot; alt=&quot;NASNet&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Search architecture for building blocks on smaller dataset and transfer to larger dataset.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use Reinforcement Learning to search building blocks.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Two main blocks (Cells):
+    &lt;ol&gt;
+      &lt;li&gt;Normal Cell: convolutional cell that return the same dimension.&lt;/li&gt;
+      &lt;li&gt;Reduction Cell: Heigh and width is reduced by factor of 2.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Operations: Use common operation like conv, max-pooling, depthwise-seperable conv.&lt;/li&gt;
+  &lt;li&gt;Combination of 2 hidden states:
+    &lt;ol&gt;
+      &lt;li&gt;Element-wise addition&lt;/li&gt;
+      &lt;li&gt;Concatenation&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Controller RNN: one-layer LSTM with softmax predictions for each decision.
+&lt;img src=&quot;/assets/images/cnn/NASNet_controller.png&quot; alt=&quot;Controller&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;object-detection--segmentation-using-cnn&quot;&gt;Object Detection &amp;amp; Segmentation Using CNN&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;For object detection &amp;amp; segmentation tasks, models need to output more fine-grained details.&lt;/li&gt;
+  &lt;li&gt;Thus, many other architectures and training schema for more efficiency were proposed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-is-map&quot;&gt;What is mAP?&lt;/h3&gt;
+
+&lt;h3 id=&quot;region-based-cnn-r-cnn&quot;&gt;&lt;a href=&quot;http://islab.ulsan.ac.kr/files/announcement/513/rcnn_pami.pdf&quot;&gt;Region-based CNN (R-CNN)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/R-CNN.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Flow: region proposals \(\rightarrow\) CNN feature extraction \(\rightarrow\) Image classification \(\rightarrow\) BBOX regression&lt;/li&gt;
+  &lt;li&gt;Region proposals: category-independent methods
+    &lt;ul&gt;
+      &lt;li&gt;Examples: objectness, &lt;strong&gt;selective search&lt;/strong&gt;, …etc.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;CNN feature extraction: this paper use OxfordNet and TorontoNet
+    &lt;ul&gt;
+      &lt;li&gt;Pre-trained on ILSVRC2012 (image classification labels)&lt;/li&gt;
+      &lt;li&gt;Fine-tuning on warped region proposals
+        &lt;ul&gt;
+          &lt;li&gt;Treat all region proposals with &amp;gt;= 0.5 IoU as positive&lt;/li&gt;
+          &lt;li&gt;Add 1 additional background class&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Image classification: Use class-specific linear SVMs
+    &lt;ul&gt;
+      &lt;li&gt;Grid search the overlap threshold (\(IoU = 0.1\sim 0.5\))&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Bounding Box regression:
+    &lt;ul&gt;
+      &lt;li&gt;Linear regression with ridge regularization.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;spatial-pyramid-pooling-networks-sppnets&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1406.4729v4.pdf&quot;&gt;Spatial pyramid pooling networks (SPPnets)&lt;/a&gt;:&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/SPPnet.png&quot; alt=&quot;SPPnet&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To remove fixed size constraint in the convolution parts.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://mplab.ucsd.edu/~marni/Igert/Lazebnik_06.pdf&quot;&gt;Spatial Pyramid Pooling (SPP)&lt;/a&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Partition images into various size and aggregate them.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;SPPnet:
+    &lt;ul&gt;
+      &lt;li&gt;Replace the last pooling layer with SPP layer.&lt;/li&gt;
+      &lt;li&gt;SPP layer outputs: \(kM\)-dimensional vectors
+        &lt;ul&gt;
+          &lt;li&gt;\(M\) = the number of spatial bins&lt;/li&gt;
+          &lt;li&gt;\(k\) = the number of filters in the last convolutional layer&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;fast-r-cnn&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1504.08083v2.pdf&quot;&gt;Fast R-CNN&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/FastR-CNN.png&quot; alt=&quot;FastR-CNN&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RoI pooling layer: Only one pyramind level in SPPnets&lt;/li&gt;
+  &lt;li&gt;Initialization: pre-trained ImageNet network with 3 modification
+    &lt;ul&gt;
+      &lt;li&gt;Replaced last max-pooling by RoI pooling layer.&lt;/li&gt;
+      &lt;li&gt;Add a FC and softmax over K + 1 classes and bbox regressors.&lt;/li&gt;
+      &lt;li&gt;Modify input into: a list of images and RoIs for each images.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Comparison with R-CNN and SPPnet:
+    &lt;ul&gt;
+      &lt;li&gt;Fast R-CNN: For each batch, use RoIs from small set of images.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;End-to-End training for fine-tuning, classification, bbox regression.&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Multi-task loss:&lt;/li&gt;
+&lt;/ul&gt;
+
+\[L(p,u,t^u,v) = L_{cls}(p,u) + \lambda [u\geq 1]L_{loc}(t^u,v)\]
+
+&lt;ul&gt;
+  &lt;li&gt;\([u\geq 1]\) = 1 if \(u\geq 1\) else 0 (background class: u = 0)&lt;/li&gt;
+  &lt;li&gt;\(L_{cls}(p,u) = -logp_u\) is the log loss for true class \(u\)&lt;/li&gt;
+  &lt;li&gt;
+\[L_{loc}(t^u,v) = \sum_{i\in {x,y,w,h} } smooth_{L_1}(t^u-v_i)\]
+    &lt;ul&gt;
+      &lt;li&gt;\(L_1\) loss: less sensitive to outliers and prevent exploding gradient.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+\[smooth_{L_1}(x) = \begin{matrix}
+                     0.5x^2 &amp;amp; if |x| &amp;lt; 1 \newline
+                    |x| - 0.5 &amp;amp; otherwise 
+                  \end{matrix}\]
+
+&lt;ul&gt;
+  &lt;li&gt;Speed up for detection using Truncated SVD
+    &lt;ul&gt;
+      &lt;li&gt;Motivation: Slow when many RoI vectors forward-pass fully-connected layers (\(W\)).&lt;/li&gt;
+      &lt;li&gt;Factorize \(W\) as \(W \approx U\sum_t V^T\) (\(U: u\times t\), \(\sum_t: t\times t\), \(V^T: v\times t\))&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;faster-r-cnn-region-proposal-networkrpn&quot;&gt;&lt;a href=&quot;https://papers.nips.cc/paper/5638-faster-r-cnn-towards-real-time-object-detection-with-region-proposal-networks.pdf&quot;&gt;Faster R-CNN (Region Proposal Network(RPN))&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/RPN.png&quot; alt=&quot;FasterR-CNN&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Motivation: Region proposals cause computation bottleneck
+    &lt;ul&gt;
+      &lt;li&gt;Faster R-CNN = RPN + Fast R-CNN&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;RPN: 2 additional conv layers (a kind of &lt;a href=&quot;#&amp;lt;a-href%3D&amp;quot;https%3A%2F%2Farxiv.org%2Fpdf%2F1605.06211v1.pdf&amp;quot;-rel%3D&amp;quot;nofollow&amp;quot;-target%3D&amp;quot;_blank&amp;quot;&amp;gt;Fully-Connected-CNN-(FCN)&amp;lt;%2Fa&amp;gt;&quot;&gt;FCN&lt;/a&gt;)
+    &lt;ol&gt;
+      &lt;li&gt;Encodes each position in feature map into a fixed-length vector. (nxn conv.)&lt;/li&gt;
+      &lt;li&gt;Score each vector an objectness score and regressed bbox for \(k\) region proposals of various scale. (1x1 conv.)&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Translation-Invariant Anchors: a set of pre-defined bboxes
+    &lt;ul&gt;
+      &lt;li&gt;Each anchor can have different scales and aspect ratios
+        &lt;ul&gt;
+          &lt;li&gt;Here they use 3 scales and 3 aspect ratios, resulting in 9 anchors at each position&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Loss function for learning region proposals
+    &lt;ul&gt;
+      &lt;li&gt;Labels for each anchor (object or background):
+        &lt;ul&gt;
+          &lt;li&gt;Positive:
+            &lt;ol&gt;
+              &lt;li&gt;Highest IoU with ground-truth bboxes.&lt;/li&gt;
+              &lt;li&gt;IoU with ground truth \(\geq\) threshold (e.g. 0.7)&lt;/li&gt;
+            &lt;/ol&gt;
+          &lt;/li&gt;
+          &lt;li&gt;Negative: IoU \(\leq\) threhold (e.g. 0.3) with &lt;strong&gt;all&lt;/strong&gt; ground-truth bboxes.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Multi-task loss: \(L({p_i},{t_i}) = \frac{1}{N_cls} \sum_i L_{cls}(p_i,p_i^*) + \lambda  \frac{1}{N_reg} \sum_i p_i^*L_{reg}(t_i,t_i^*)\)
+        &lt;ul&gt;
+          &lt;li&gt;\(p_i\) = predicted probability of anchor \(i\) being an object. (\(p_i^*\) = true label)&lt;/li&gt;
+          &lt;li&gt;\(t_i\) = a vector of bbox coordinates. (\(t_i^*\) = true coordinates)&lt;/li&gt;
+          &lt;li&gt;\(L_{cls}(p_i,p_i^*)\) = log loss over 2 classes&lt;/li&gt;
+          &lt;li&gt;\(L_{reg}(t_i,t_i^*)\) = smoothed L1-loss in &lt;a href=&quot;#&amp;lt;a-href%3D&amp;quot;https%3A%2F%2Farxiv.org%2Fpdf%2F1504.08083v2.pdf&amp;quot;-rel%3D&amp;quot;nofollow&amp;quot;-target%3D&amp;quot;_blank&amp;quot;&amp;gt;Fast-R-CNN&amp;lt;%2Fa&amp;gt;&quot;&gt;Fast-RCNN&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Share conv features between RPN and Fast R-CNN: 4-step training
+    &lt;ol&gt;
+      &lt;li&gt;Train RPN (with ImageNet-pre-trained model and fine-tune end-to-end)&lt;/li&gt;
+      &lt;li&gt;Train Fast R-CNN using proposals from 1.&lt;/li&gt;
+      &lt;li&gt;Initialze RPN and fine-tune RPN with fixed shared conv layers.&lt;/li&gt;
+      &lt;li&gt;Fine-tune Fast R-CNN with fixed shared conv layers.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;mask-r-cnn&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1703.06870v3.pdf&quot;&gt;Mask R-CNN&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/MaskR-CNN.png&quot; alt=&quot;Mask R-CNN&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add mask branch (&lt;a href=&quot;#&amp;lt;a-href%3D&amp;quot;https%3A%2F%2Farxiv.org%2Fpdf%2F1605.06211v1.pdf&amp;quot;-rel%3D&amp;quot;nofollow&amp;quot;-target%3D&amp;quot;_blank&amp;quot;&amp;gt;Fully-Connected-CNN-(FCN)&amp;lt;%2Fa&amp;gt;&quot;&gt;FCN&lt;/a&gt;) for image segmentation into Faster R-CNN.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Multi-task loss for each RoI: \(L = L_{cls} + L_{box} + L_{mask}\)
+    &lt;ul&gt;
+      &lt;li&gt;\(L_{cls},L_{box}\) are the same as Faster R-CNN&lt;/li&gt;
+      &lt;li&gt;\(L_{mask}\) is the average binary cross-entropy loss of pixel-wise masks.&lt;/li&gt;
+      &lt;li&gt;\(K\) binary masks of resolution \(m x m\) for \(K\) classes.&lt;/li&gt;
+      &lt;li&gt;&lt;em&gt;Decouple&lt;/em&gt; classification and segmentation by per-pixel sigmoid and binary loss.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;To fix misalignment, a quantization-free layer: &lt;em&gt;RoIAlign&lt;/em&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Use bilinear interpolation to compute exact values of input feature.&lt;/li&gt;
+      &lt;li&gt;No quantization is the most crucial point.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Network:
+    &lt;ul&gt;
+      &lt;li&gt;Backbone: for feature extraction, e.g. &lt;a href=&quot;#&amp;lt;a-href%3D&amp;quot;https%3A%2F%2Farxiv.org%2Fpdf%2F1512.03385v1.pdf&amp;quot;-rel%3D&amp;quot;nofollow&amp;quot;-target%3D&amp;quot;_blank&amp;quot;&amp;gt;ResNet&amp;lt;%2Fa&amp;gt;&quot;&gt;ResNet&lt;/a&gt;, &lt;a href=&quot;#&amp;lt;a-href%3D&amp;quot;https%3A%2F%2Farxiv.org%2Fpdf%2F1612.03144v2.pdf&amp;quot;-rel%3D&amp;quot;nofollow&amp;quot;-target%3D&amp;quot;_blank&amp;quot;&amp;gt;Feature-Pyramid-Networks-(FPN)&amp;lt;%2Fa&amp;gt;&quot;&gt;FPN&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;Head: for regression, classification and mask prediction, e.g. FCN&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;feature-pyramid-networks-fpn&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1612.03144v2.pdf&quot;&gt;Feature Pyramid Networks (FPN)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/FPN.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Main Goal:
+    &lt;blockquote&gt;
+      &lt;p&gt;&lt;em&gt;The goal of this paper is to naturally leverage the pyramidal
+shape of a ConvNet’s feature hierarchy while creating a feature pyramid that has strong semantics at all scales.&lt;/em&gt;&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;To construct multi-scale feature maps for downstream tasks.
+    &lt;ul&gt;
+      &lt;li&gt;Utilize each level of conv-layers to produce multi-scale feature maps.&lt;/li&gt;
+      &lt;li&gt;Each level of feature maps = Upsampling(Higher level) + Conv1x1(Current level)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Applications:
+    &lt;ul&gt;
+      &lt;li&gt;For Region-proposal Network (RPN):
+        &lt;ul&gt;
+          &lt;li&gt;Attach the RPN head (3x3 conv and 2 1x1 convs) to each level of feature pyramid.&lt;/li&gt;
+          &lt;li&gt;Each anchor has single scale, multiple aspect ratios for each level.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;For Fast R-CNN:
+        &lt;ul&gt;
+          &lt;li&gt;Assign an RoI of width \(w\) and height \(h\) to level \(P_k\) by: \(k = \lfloor{k_0 + log_2(\sqrt{wh}/224)}\rfloor\)
+            &lt;ul&gt;
+              &lt;li&gt;\(k_0\) = target level that RoI mapped into&lt;/li&gt;
+              &lt;li&gt;224 is the canonical ImageNet pre-training size&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;Attach predictor heads to all RoIs of all levels.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/MaskRCNN_head.png&quot; alt=&quot;head&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;fully-connected-cnn-fcn&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1605.06211v1.pdf&quot;&gt;Fully Connected CNN (FCN)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cnn/FCN.png&quot; alt=&quot;FCN&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;others-maybe-next-time&quot;&gt;Others: Maybe next time&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1506.02640v5.pdf&quot;&gt;You only looked once (yolo)&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://pjreddie.com/publications/&quot;&gt;Website&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1612.08242v1.pdf&quot;&gt;YoloV2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1804.02767v1.pdf&quot;&gt;YoloV3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;multi-function-cnn-for-medical-image-classification&quot;&gt;&lt;a href=&quot;https://arxiv.org/pdf/1811.11996v1.pdf&quot;&gt;Multi-function CNN for Medical image classification&lt;/a&gt;&lt;/h3&gt;</content><author><name></name></author><category term="[&quot;Deep-Learning&quot;]" /><summary type="html">This is a note of CNN model architectures. For what is Convolution Neural Network (CNN), I recommend you to first read this.</summary></entry></feed>
