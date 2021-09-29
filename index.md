@@ -13,10 +13,15 @@ layout: home
 
 ---
 ## ![My work experience](/assets/images/icons/portfolio.png) Work Experience
+
+#### Software Engineer at KURA Care Inc. (Mar. 2021 - present)
+* Enhance performance of ML models and deployed as packages.
+* Develop API backend system of ECG (Electrocardiography) analytic platform.
+
 #### Machine Learning R&D Intern at KURA Care Inc. (May. 2019 - Aug. 2020)
 * Research on medical image classification algorithms and analysis.
 
-#### Machine Learning R&D intern at DeepForce Inc. (Feb. 2018 - Apr. 2019)
+#### Machine Learning R&D Intern at DeepForce Inc. (Feb. 2018 - Apr. 2019)
 * Developed face image crawler on videos for training face recognition models.
 * Developed medical text mining system to help doctors diagnose patients.
     * Models for tagging Human Phenotype Ontology from user-input text.
