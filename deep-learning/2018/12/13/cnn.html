@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Convolutional Neural Network | Hao Chun Chang’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Convolutional Neural Network" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is a note of CNN model architectures. For what is Convolution Neural Network (CNN), I recommend you to first read this." />
+<meta property="og:description" content="This is a note of CNN model architectures. For what is Convolution Neural Network (CNN), I recommend you to first read this." />
+<link rel="canonical" href="https://haochunchang.github.io/deep-learning/2018/12/13/cnn.html" />
+<meta property="og:url" content="https://haochunchang.github.io/deep-learning/2018/12/13/cnn.html" />
+<meta property="og:site_name" content="Hao Chun Chang’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-13T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"This is a note of CNN model architectures. For what is Convolution Neural Network (CNN), I recommend you to first read this.","mainEntityOfPage":{"@type":"WebPage","@id":"https://haochunchang.github.io/deep-learning/2018/12/13/cnn.html"},"url":"https://haochunchang.github.io/deep-learning/2018/12/13/cnn.html","@type":"BlogPosting","headline":"Convolutional Neural Network","dateModified":"2018-12-13T00:00:00+00:00","datePublished":"2018-12-13T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+
+  <!-- favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/images/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- for mathjax support -->
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <link type="application/atom+xml" rel="alternate" href="https://haochunchang.github.io/feed.xml" title="Hao Chun Chang's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Hao Chun Chang&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/daily_posts.html">Daily</a><a class="page-link" href="/blog/deep_learning_posts.html">Deep-Learning</a><a class="page-link" href="/blog/programming_posts.html">Programming</a><a class="page-link" href="/blog/tools_posts.html">Tools</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Convolutional Neural Network</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-12-13T00:00:00+00:00" itemprop="datePublished">Dec 13, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="this-is-a-note-of-cnn-model-architectures">This is a note of CNN model architectures.</h2>
+<ul>
+  <li>For what is Convolution Neural Network (CNN), I recommend you to first read <a href="http://cs231n.github.io/convolutional-networks/">this</a>.</li>
+</ul>
+
+<hr />
+<h2 id="image-classification">Image Classification</h2>
+<ul>
+  <li>There are pre-trained models trained on ImageNet in <a href="https://keras.io/applications/">keras.applications</a>.</li>
+  <li>Pre-trained models are useful for transfer learning.</li>
+</ul>
+
+<h3 id="inception-googlenet"><a href="https://arxiv.org/pdf/1409.4842.pdf">Inception (GoogLeNet)</a></h3>
+<p><img src="/assets/images/cnn/Inception.png" alt="Inception" /></p>
+
+<ul>
+  <li>Inception module: Various sizes of feature maps in parallel.
+    <ul>
+      <li>Useful in localization</li>
+      <li>Main Idea:
+        <blockquote>
+          <p><em>Finding out how an optimal local sparse structure in a convolutional vision network can be approximated and covered by readily available dense components.</em></p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>Use 1x1 convolution to reduce dimension.</li>
+</ul>
+
+<h5 id="inceptionv2"><a href="https://arxiv.org/pdf/1512.00567v3.pdf">InceptionV2</a></h5>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Factorized Convolution</th>
+      <th style="text-align: center">Assymetric Convolution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="/assets/images/cnn/InceptionV2_block.png" alt="inceptionV2_block" /></td>
+      <td style="text-align: center"><img src="/assets/images/cnn/InceptionV2_block2.png" alt="inceptionV2_block2" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>General Design Principles:
+    <ol>
+      <li>Avoid representational bottlenecks: avoid extreme compression to info. loss</li>
+      <li>Increase the activation per tile in CNN: train faster</li>
+      <li>Spatial aggregation on lower dim embed: Maybe adjacent units have strong correlation.</li>
+      <li>Balance the width and the depth of the network.</li>
+    </ol>
+  </li>
+  <li>Factorization of convolutions:
+    <ul>
+      <li>Replace 5x5 conv by two 3x3 convs. (Exploit translation invariance again)</li>
+      <li>Replace 3x3 conv by 3x1 and 1x3 convs. (nxn \(\rightarrow\) nx1 and 1xn)</li>
+      <li>Works well on m x m feature maps (\(m = 12\sim 20\))</li>
+    </ul>
+  </li>
+  <li>Efficiently reduce grid size:
+    <ul>
+      <li>Convolution and Pooling done seperately and concat back.
+  <img src="/assets/images/cnn/InceptionV2_reduce.png" alt="reduce_grid" /></li>
+    </ul>
+  </li>
+  <li>Label-smoothing regularization (LSR): Avoid model to assign labels too confidently
+    <ul>
+      <li>x / y = training example / label</li>
+      <li>k = labels, u(k) = a fixed distribution (e.g. u(k) = 1/K)</li>
+      <li>Original label distribution: \(q(k\|x) = \delta_{k,y}\)</li>
+      <li>Smoothed label distribution: \(q'(k) = (1 - \epsilon)\delta_{k,y} + \epsilon u(k)\)
+        <ul>
+          <li>Cross-entropy loss = \(H(q', p) = (1 - \epsilon)H(q, p) + \epsilon H(u, p)\)</li>
+          <li>\(H(u, p)\) can be captured by <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">KL divergence</a>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="resnet"><a href="https://arxiv.org/pdf/1512.03385v1.pdf">ResNet</a></h3>
+<p><img src="/assets/images/cnn/ResNet.png" alt="Residual Network" /></p>
+
+<ul>
+  <li>Residual operation for reusing feature maps.</li>
+  <li>Motivation: Deeper network produces <strong>higher</strong> training error \(\rightarrow\) Degradation.</li>
+  <li>Core building block: (\(W_s\) is a linear projection to match dimensions)
+\(y = F(x, {W_i}) + W_sx\)</li>
+</ul>
+
+<h3 id="densenet"><a href="https://arxiv.org/pdf/1608.06993v5.pdf">DenseNet</a></h3>
+<p><img src="/assets/images/cnn/DenseNet.png" alt="img" /></p>
+
+<ul>
+  <li><a href="https://github.com/liuzhuang13/DenseNet">Github</a></li>
+  <li>Densely-connected convolutional layers:
+    <ul>
+      <li>Receive concatenation of feature maps from all preceding layers.</li>
+      <li>For \(l^{th}\) layer, the output \(x_l=H_l([x_0, x_1,..., x_{l-1}])\)</li>
+      <li>Cannot perform pooling in Dense-connected blocks.</li>
+    </ul>
+  </li>
+  <li>Advantages:
+    <ul>
+      <li>Universal access of feature maps within Dense blocks.</li>
+      <li>Can reduce number of feature maps by 1x1 conv between Dense blocks.</li>
+      <li>Deep supervision, Feature reusage, Network compression.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="mobilenet"><a href="https://arxiv.org/pdf/1704.04861.pdf">MobileNet</a></h3>
+<p><img src="/assets/images/cnn/MobileNet.png" alt="img" /></p>
+
+<ul>
+  <li>Essence:
+    <blockquote>
+      <p><em>The MobileNet model is based on depthwise separable convolutions which is a form of factorized convolutions which factorize a standard convolution into a <strong>depthwise convolution</strong> and a 1×1 convolution called a <strong>pointwise convolution</strong>.</em></p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Seprate standard convolutional layer into 2 layers (With BatchNormalization and ReLU for layer outputs)</p>
+  </li>
+  <li>Let:
+    <ul>
+      <li>\(D_{F/G}\) = spatial dimention of feature map \(F/G\)</li>
+      <li>\(D_K\) = spatial dimention of kernel \(K\)</li>
+      <li>\(M\) = number of input channel, \(N\) = number of output channel</li>
+    </ul>
+  </li>
+  <li>Standard Convolution
+    <ul>
+      <li>
+        <p>Assuming stride=1 and padding
+\(G_{k,l,n} = \sum_{i,j,m}{K_{i,j,m,n}F_{ {k+i-1},{l+j-1},m} }\)
+\(i=row, j=col, m=input\space channel, n=output\space channel\)</p>
+      </li>
+      <li>Parameter size of \(K = D_K\times D_K\times M\times N\)</li>
+      <li>Computation cost = \(D_K\cdot D_K\cdot M\cdot N\cdot D_F\cdot D_F\)</li>
+    </ul>
+  </li>
+  <li>Depthwise separable Convolution = Depthwise &amp; Pointwise convolution
+    <ul>
+      <li>Depthwise convolutions: 1 filter per input channel
+\(\hat{G}_{k,l,m} = \sum_{i,j}{\hat{K}_{i,j,m}F_{ {k+i-1},{l+j-1},m} }\)
+        <ul>
+          <li>Parameter size of \(\hat{K} = D_K\times D_K\times M\)</li>
+          <li>Computation cost = \(D_K\cdot D_K\cdot M\cdot D_F\cdot D_F\)</li>
+        </ul>
+      </li>
+      <li>Pointwise convolutions = 1x1 convolution
+        <ul>
+          <li>Computation const = \(M\cdot N\cdot D_F\cdot D_F\)</li>
+        </ul>
+      </li>
+      <li>Further reduction of cost:
+        <ul>
+          <li>Width parameter: \(0 &lt; \alpha &lt;= 1\)</li>
+          <li>Resolution parameter: \(0 &lt; \rho &lt; =1\)</li>
+          <li>Computation const = 
+\(D_K\cdot D_K\cdot \alpha M\cdot \rho D_F\cdot \rho D_F + \alpha M\cdot \alpha N\cdot \rho D_F\cdot \rho D_F\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="mobilenet_v2"><a href="https://arxiv.org/pdf/1801.04381v3.pdf">MobileNet_v2</a></h5>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Overall Architecture</th>
+      <th style="text-align: center">Inverted Residual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="/assets/images/cnn/MobileNetV2.png" alt="MobileNetV2" /></td>
+      <td style="text-align: center"><img src="/assets/images/cnn/InvertedResidual.png" alt="invertedResidual" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>Main contribution: inverted residual with linear bottleneck</li>
+  <li>Linear bottleneck:
+    <ul>
+      <li>Assume the “manifold of interest” lies in a low-dimensional subspace of the input space.</li>
+    </ul>
+  </li>
+  <li>Bottleneck Residual Block (\(F(x) = [A\circ N\circ B]x\)): Composition of 3 operators
+    <ul>
+      <li>Linear transformation: \(A: R^{s\times s\times k} \rightarrow R^{s\times s\times n}\)</li>
+      <li>Non-linear <strong>per channel</strong>: \(N: R^{s\times s\times n} \rightarrow R^{ {s}'\times {s}'\times n}\)
+        <ul>
+          <li>In this paper: \(N = ReLU6\circ dwise\circ ReLU6\)</li>
+        </ul>
+      </li>
+      <li>Linear transformation: \(B: R^{ {s}'\times {s}'\times n} \rightarrow R^{ {s}'\times {s}'\times {k}'}\)</li>
+      <li>Represent inner tensor \(I\) as concatenation of \(t\) tensors of size \(n/t\)
+\(F(x) = \sum^t_{i=1}(A_i\circ N\circ B_i)(x)\)</li>
+      <li>Get improvement because of
+        <ol>
+          <li>Inner transformation is per-channel.</li>
+          <li>Consecutive non-per-channel operators have significanct \(\frac{input\space size}{output\space size}\).</li>
+          <li>Recommended \(t = 2\sim 5\) for avoiding cache miss in matrix multiplication.</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="neural-arichitecture-search-nasnet"><a href="https://arxiv.org/pdf/1707.07012v4.pdf">Neural Arichitecture Search (NASNet)</a></h3>
+<p><img src="/assets/images/cnn/NASNet.png" alt="NASNet" /></p>
+
+<ul>
+  <li>Search architecture for building blocks on smaller dataset and transfer to larger dataset.</li>
+  <li>
+    <p>Use Reinforcement Learning to search building blocks.</p>
+  </li>
+  <li>Two main blocks (Cells):
+    <ol>
+      <li>Normal Cell: convolutional cell that return the same dimension.</li>
+      <li>Reduction Cell: Heigh and width is reduced by factor of 2.</li>
+    </ol>
+  </li>
+  <li>Operations: Use common operation like conv, max-pooling, depthwise-seperable conv.</li>
+  <li>Combination of 2 hidden states:
+    <ol>
+      <li>Element-wise addition</li>
+      <li>Concatenation</li>
+    </ol>
+  </li>
+  <li>Controller RNN: one-layer LSTM with softmax predictions for each decision.
+<img src="/assets/images/cnn/NASNet_controller.png" alt="Controller" /></li>
+</ul>
+
+<hr />
+
+<h2 id="object-detection--segmentation-using-cnn">Object Detection &amp; Segmentation Using CNN</h2>
+
+<ul>
+  <li>For object detection &amp; segmentation tasks, models need to output more fine-grained details.</li>
+  <li>Thus, many other architectures and training schema for more efficiency were proposed.</li>
+</ul>
+
+<h3 id="what-is-map">What is mAP?</h3>
+
+<h3 id="region-based-cnn-r-cnn"><a href="http://islab.ulsan.ac.kr/files/announcement/513/rcnn_pami.pdf">Region-based CNN (R-CNN)</a></h3>
+<p><img src="/assets/images/cnn/R-CNN.png" alt="img" /></p>
+
+<ul>
+  <li>Flow: region proposals \(\rightarrow\) CNN feature extraction \(\rightarrow\) Image classification \(\rightarrow\) BBOX regression</li>
+  <li>Region proposals: category-independent methods
+    <ul>
+      <li>Examples: objectness, <strong>selective search</strong>, …etc.</li>
+    </ul>
+  </li>
+  <li>CNN feature extraction: this paper use OxfordNet and TorontoNet
+    <ul>
+      <li>Pre-trained on ILSVRC2012 (image classification labels)</li>
+      <li>Fine-tuning on warped region proposals
+        <ul>
+          <li>Treat all region proposals with &gt;= 0.5 IoU as positive</li>
+          <li>Add 1 additional background class</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Image classification: Use class-specific linear SVMs
+    <ul>
+      <li>Grid search the overlap threshold (\(IoU = 0.1\sim 0.5\))</li>
+    </ul>
+  </li>
+  <li>Bounding Box regression:
+    <ul>
+      <li>Linear regression with ridge regularization.</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="spatial-pyramid-pooling-networks-sppnets"><a href="https://arxiv.org/pdf/1406.4729v4.pdf">Spatial pyramid pooling networks (SPPnets)</a>:</h5>
+<p><img src="/assets/images/cnn/SPPnet.png" alt="SPPnet" /></p>
+
+<ul>
+  <li>To remove fixed size constraint in the convolution parts.</li>
+  <li><a href="http://mplab.ucsd.edu/~marni/Igert/Lazebnik_06.pdf">Spatial Pyramid Pooling (SPP)</a>:
+    <ul>
+      <li>Partition images into various size and aggregate them.</li>
+    </ul>
+  </li>
+  <li>SPPnet:
+    <ul>
+      <li>Replace the last pooling layer with SPP layer.</li>
+      <li>SPP layer outputs: \(kM\)-dimensional vectors
+        <ul>
+          <li>\(M\) = the number of spatial bins</li>
+          <li>\(k\) = the number of filters in the last convolutional layer</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="fast-r-cnn"><a href="https://arxiv.org/pdf/1504.08083v2.pdf">Fast R-CNN</a></h5>
+<p><img src="/assets/images/cnn/FastR-CNN.png" alt="FastR-CNN" /></p>
+
+<ul>
+  <li>RoI pooling layer: Only one pyramind level in SPPnets</li>
+  <li>Initialization: pre-trained ImageNet network with 3 modification
+    <ul>
+      <li>Replaced last max-pooling by RoI pooling layer.</li>
+      <li>Add a FC and softmax over K + 1 classes and bbox regressors.</li>
+      <li>Modify input into: a list of images and RoIs for each images.</li>
+    </ul>
+  </li>
+  <li>Comparison with R-CNN and SPPnet:
+    <ul>
+      <li>Fast R-CNN: For each batch, use RoIs from small set of images.</li>
+      <li><strong>End-to-End training for fine-tuning, classification, bbox regression.</strong></li>
+    </ul>
+  </li>
+  <li>Multi-task loss:</li>
+</ul>
+
+\[L(p,u,t^u,v) = L_{cls}(p,u) + \lambda [u\geq 1]L_{loc}(t^u,v)\]
+
+<ul>
+  <li>\([u\geq 1]\) = 1 if \(u\geq 1\) else 0 (background class: u = 0)</li>
+  <li>\(L_{cls}(p,u) = -logp_u\) is the log loss for true class \(u\)</li>
+  <li>
+\[L_{loc}(t^u,v) = \sum_{i\in {x,y,w,h} } smooth_{L_1}(t^u-v_i)\]
+    <ul>
+      <li>\(L_1\) loss: less sensitive to outliers and prevent exploding gradient.</li>
+    </ul>
+  </li>
+</ul>
+
+\[smooth_{L_1}(x) = \begin{matrix}
+                     0.5x^2 &amp; if |x| &lt; 1 \newline
+                    |x| - 0.5 &amp; otherwise 
+                  \end{matrix}\]
+
+<ul>
+  <li>Speed up for detection using Truncated SVD
+    <ul>
+      <li>Motivation: Slow when many RoI vectors forward-pass fully-connected layers (\(W\)).</li>
+      <li>Factorize \(W\) as \(W \approx U\sum_t V^T\) (\(U: u\times t\), \(\sum_t: t\times t\), \(V^T: v\times t\))</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="faster-r-cnn-region-proposal-networkrpn"><a href="https://papers.nips.cc/paper/5638-faster-r-cnn-towards-real-time-object-detection-with-region-proposal-networks.pdf">Faster R-CNN (Region Proposal Network(RPN))</a></h5>
+<p><img src="/assets/images/cnn/RPN.png" alt="FasterR-CNN" /></p>
+
+<ul>
+  <li>Motivation: Region proposals cause computation bottleneck
+    <ul>
+      <li>Faster R-CNN = RPN + Fast R-CNN</li>
+    </ul>
+  </li>
+  <li>RPN: 2 additional conv layers (a kind of <a href="#&lt;a-href%3D&quot;https%3A%2F%2Farxiv.org%2Fpdf%2F1605.06211v1.pdf&quot;-rel%3D&quot;nofollow&quot;-target%3D&quot;_blank&quot;&gt;Fully-Connected-CNN-(FCN)&lt;%2Fa&gt;">FCN</a>)
+    <ol>
+      <li>Encodes each position in feature map into a fixed-length vector. (nxn conv.)</li>
+      <li>Score each vector an objectness score and regressed bbox for \(k\) region proposals of various scale. (1x1 conv.)</li>
+    </ol>
+  </li>
+  <li>Translation-Invariant Anchors: a set of pre-defined bboxes
+    <ul>
+      <li>Each anchor can have different scales and aspect ratios
+        <ul>
+          <li>Here they use 3 scales and 3 aspect ratios, resulting in 9 anchors at each position</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Loss function for learning region proposals
+    <ul>
+      <li>Labels for each anchor (object or background):
+        <ul>
+          <li>Positive:
+            <ol>
+              <li>Highest IoU with ground-truth bboxes.</li>
+              <li>IoU with ground truth \(\geq\) threshold (e.g. 0.7)</li>
+            </ol>
+          </li>
+          <li>Negative: IoU \(\leq\) threhold (e.g. 0.3) with <strong>all</strong> ground-truth bboxes.</li>
+        </ul>
+      </li>
+      <li>Multi-task loss: \(L({p_i},{t_i}) = \frac{1}{N_cls} \sum_i L_{cls}(p_i,p_i^*) + \lambda  \frac{1}{N_reg} \sum_i p_i^*L_{reg}(t_i,t_i^*)\)
+        <ul>
+          <li>\(p_i\) = predicted probability of anchor \(i\) being an object. (\(p_i^*\) = true label)</li>
+          <li>\(t_i\) = a vector of bbox coordinates. (\(t_i^*\) = true coordinates)</li>
+          <li>\(L_{cls}(p_i,p_i^*)\) = log loss over 2 classes</li>
+          <li>\(L_{reg}(t_i,t_i^*)\) = smoothed L1-loss in <a href="#&lt;a-href%3D&quot;https%3A%2F%2Farxiv.org%2Fpdf%2F1504.08083v2.pdf&quot;-rel%3D&quot;nofollow&quot;-target%3D&quot;_blank&quot;&gt;Fast-R-CNN&lt;%2Fa&gt;">Fast-RCNN</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Share conv features between RPN and Fast R-CNN: 4-step training
+    <ol>
+      <li>Train RPN (with ImageNet-pre-trained model and fine-tune end-to-end)</li>
+      <li>Train Fast R-CNN using proposals from 1.</li>
+      <li>Initialze RPN and fine-tune RPN with fixed shared conv layers.</li>
+      <li>Fine-tune Fast R-CNN with fixed shared conv layers.</li>
+    </ol>
+  </li>
+</ul>
+
+<h5 id="mask-r-cnn"><a href="https://arxiv.org/pdf/1703.06870v3.pdf">Mask R-CNN</a></h5>
+<p><img src="/assets/images/cnn/MaskR-CNN.png" alt="Mask R-CNN" /></p>
+
+<ul>
+  <li>
+    <p>Add mask branch (<a href="#&lt;a-href%3D&quot;https%3A%2F%2Farxiv.org%2Fpdf%2F1605.06211v1.pdf&quot;-rel%3D&quot;nofollow&quot;-target%3D&quot;_blank&quot;&gt;Fully-Connected-CNN-(FCN)&lt;%2Fa&gt;">FCN</a>) for image segmentation into Faster R-CNN.</p>
+  </li>
+  <li>Multi-task loss for each RoI: \(L = L_{cls} + L_{box} + L_{mask}\)
+    <ul>
+      <li>\(L_{cls},L_{box}\) are the same as Faster R-CNN</li>
+      <li>\(L_{mask}\) is the average binary cross-entropy loss of pixel-wise masks.</li>
+      <li>\(K\) binary masks of resolution \(m x m\) for \(K\) classes.</li>
+      <li><em>Decouple</em> classification and segmentation by per-pixel sigmoid and binary loss.</li>
+    </ul>
+  </li>
+  <li>To fix misalignment, a quantization-free layer: <em>RoIAlign</em>
+    <ul>
+      <li>Use bilinear interpolation to compute exact values of input feature.</li>
+      <li>No quantization is the most crucial point.</li>
+    </ul>
+  </li>
+  <li>Network:
+    <ul>
+      <li>Backbone: for feature extraction, e.g. <a href="#&lt;a-href%3D&quot;https%3A%2F%2Farxiv.org%2Fpdf%2F1512.03385v1.pdf&quot;-rel%3D&quot;nofollow&quot;-target%3D&quot;_blank&quot;&gt;ResNet&lt;%2Fa&gt;">ResNet</a>, <a href="#&lt;a-href%3D&quot;https%3A%2F%2Farxiv.org%2Fpdf%2F1612.03144v2.pdf&quot;-rel%3D&quot;nofollow&quot;-target%3D&quot;_blank&quot;&gt;Feature-Pyramid-Networks-(FPN)&lt;%2Fa&gt;">FPN</a></li>
+      <li>Head: for regression, classification and mask prediction, e.g. FCN</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="feature-pyramid-networks-fpn"><a href="https://arxiv.org/pdf/1612.03144v2.pdf">Feature Pyramid Networks (FPN)</a></h3>
+<p><img src="/assets/images/cnn/FPN.png" alt="img" /></p>
+
+<ul>
+  <li>Main Goal:
+    <blockquote>
+      <p><em>The goal of this paper is to naturally leverage the pyramidal
+shape of a ConvNet’s feature hierarchy while creating a feature pyramid that has strong semantics at all scales.</em></p>
+    </blockquote>
+  </li>
+  <li>To construct multi-scale feature maps for downstream tasks.
+    <ul>
+      <li>Utilize each level of conv-layers to produce multi-scale feature maps.</li>
+      <li>Each level of feature maps = Upsampling(Higher level) + Conv1x1(Current level)</li>
+    </ul>
+  </li>
+  <li>Applications:
+    <ul>
+      <li>For Region-proposal Network (RPN):
+        <ul>
+          <li>Attach the RPN head (3x3 conv and 2 1x1 convs) to each level of feature pyramid.</li>
+          <li>Each anchor has single scale, multiple aspect ratios for each level.</li>
+        </ul>
+      </li>
+      <li>For Fast R-CNN:
+        <ul>
+          <li>Assign an RoI of width \(w\) and height \(h\) to level \(P_k\) by: \(k = \lfloor{k_0 + log_2(\sqrt{wh}/224)}\rfloor\)
+            <ul>
+              <li>\(k_0\) = target level that RoI mapped into</li>
+              <li>224 is the canonical ImageNet pre-training size</li>
+            </ul>
+          </li>
+          <li>Attach predictor heads to all RoIs of all levels.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/assets/images/cnn/MaskRCNN_head.png" alt="head" /></p>
+
+<h3 id="fully-connected-cnn-fcn"><a href="https://arxiv.org/pdf/1605.06211v1.pdf">Fully Connected CNN (FCN)</a></h3>
+<p><img src="/assets/images/cnn/FCN.png" alt="FCN" /></p>
+
+<hr />
+
+<h3 id="others-maybe-next-time">Others: Maybe next time</h3>
+<ul>
+  <li><a href="https://arxiv.org/pdf/1506.02640v5.pdf">You only looked once (yolo)</a>
+    <ul>
+      <li><a href="https://pjreddie.com/publications/">Website</a></li>
+    </ul>
+  </li>
+  <li><a href="https://arxiv.org/pdf/1612.08242v1.pdf">YoloV2</a></li>
+  <li><a href="https://arxiv.org/pdf/1804.02767v1.pdf">YoloV3</a></li>
+</ul>
+
+<h3 id="multi-function-cnn-for-medical-image-classification"><a href="https://arxiv.org/pdf/1811.11996v1.pdf">Multi-function CNN for Medical image classification</a></h3>
+
+  </div><a class="u-url" href="/deep-learning/2018/12/13/cnn.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Hao Chun Chang&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p>This is a blog post about a software engineer started from biochemistry to medical artifical intelligence.</p>
+      </div>
+
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">
+            Contact Me
+          </li><li><a class="u-email" href="mailto:changhaochun84@gmail.com">changhaochun84@gmail.com</a></li></ul>
+      </div>
+
+
+      <div class="footer-col footer-col-3"><ul class="social-media-list"><li><a href="https://github.com/haochunchang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">haochunchang</span></a></li><li><a href="https://www.linkedin.com/in/haochunchang84"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">haochunchang84</span></a></li></ul>
+</div>
+
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

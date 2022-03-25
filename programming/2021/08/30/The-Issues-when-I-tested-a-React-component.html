@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>The Issues when I tested a React component that upload files through axios | Hao Chun Chang’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="The Issues when I tested a React component that upload files through axios" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The FileUploader component" />
+<meta property="og:description" content="The FileUploader component" />
+<link rel="canonical" href="https://haochunchang.github.io/programming/2021/08/30/The-Issues-when-I-tested-a-React-component.html" />
+<meta property="og:url" content="https://haochunchang.github.io/programming/2021/08/30/The-Issues-when-I-tested-a-React-component.html" />
+<meta property="og:site_name" content="Hao Chun Chang’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-30T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"The FileUploader component","mainEntityOfPage":{"@type":"WebPage","@id":"https://haochunchang.github.io/programming/2021/08/30/The-Issues-when-I-tested-a-React-component.html"},"url":"https://haochunchang.github.io/programming/2021/08/30/The-Issues-when-I-tested-a-React-component.html","@type":"BlogPosting","headline":"The Issues when I tested a React component that upload files through axios","dateModified":"2021-08-30T00:00:00+00:00","datePublished":"2021-08-30T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+
+  <!-- favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/images/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- for mathjax support -->
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <link type="application/atom+xml" rel="alternate" href="https://haochunchang.github.io/feed.xml" title="Hao Chun Chang's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Hao Chun Chang&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/daily_posts.html">Daily</a><a class="page-link" href="/blog/deep_learning_posts.html">Deep-Learning</a><a class="page-link" href="/blog/programming_posts.html">Programming</a><a class="page-link" href="/blog/tools_posts.html">Tools</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">The Issues when I tested a React component that upload files through axios</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-08-30T00:00:00+00:00" itemprop="datePublished">Aug 30, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="the-fileuploader-component">The FileUploader component</h2>
+
+<p>There is a React component that sends POST request to API with its <code class="language-plaintext highlighter-rouge">selectedFile</code> in JSON format when <code class="language-plaintext highlighter-rouge">handleSubmit</code> is called.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">FileUploader</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">selectedFile</span><span class="p">:</span> <span class="kc">null</span> <span class="p">};</span>
+  <span class="p">}</span>
+
+	<span class="nx">clickButton</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">submit_button</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">setSelectedFile</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="na">selectedFile</span><span class="p">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+	<span class="nx">postData</span> <span class="o">=</span> <span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	  <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+	    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	      <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">handler</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+     <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+     <span class="p">});</span>
+	<span class="p">}</span>
+
+	<span class="nx">readJSONFile</span> <span class="o">=</span> <span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileReader</span><span class="p">();</span>
+      <span class="nx">reader</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">load</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">result</span><span class="p">));</span>
+      <span class="p">});</span>
+      <span class="nx">reader</span><span class="p">.</span><span class="nx">readAsText</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+      <span class="nx">reader</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span> <span class="p">};</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+
+	<span class="nx">handleSubmit</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="c1">// ...</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">readJSONFile</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">selectedFile</span><span class="p">)</span>
+		    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+			    <span class="k">this</span><span class="p">.</span><span class="nx">postData</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;The API endpoint&gt;</span><span class="dl">"</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+		    <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+		    <span class="p">});</span>
+		<span class="c1">// ...</span>
+
+	<span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="p">(</span>
+			<span class="c1">// ...</span>
+			<span class="p">&lt;</span><span class="nt">input</span>
+        <span class="na">type</span><span class="p">=</span><span class="s">"file"</span>
+        <span class="na">accept</span><span class="p">=</span><span class="s">"application/json"</span>
+        <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">setSelectedFile</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="si">}</span>
+        <span class="na">hidden</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">"submitbtn"</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">clickButton</span><span class="si">}</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="p">=</span><span class="s">"submit_button"</span> <span class="na">type</span><span class="p">=</span><span class="s">"submit"</span> <span class="na">value</span><span class="p">=</span><span class="s">"Submit"</span><span class="p">/&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+			<span class="c1">//...</span>
+		<span class="p">)</span>
+	<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="the-issue-in-the-tests-using-jest--enzyme">The issue in the tests (using Jest &amp; Enzyme)</h2>
+
+<h3 id="issue-1-the-mocked-axiospost-does-not-get-called">Issue 1: the mocked <code class="language-plaintext highlighter-rouge">axios.post</code> does not get called.</h3>
+
+<ul>
+  <li>In the test, I wanted to test clicking the submit button actually follows the logic and triggers <code class="language-plaintext highlighter-rouge">axios</code>, therefore I wrote the following tests:
+    <ul>
+      <li>Constructs dummy json file to be selected by FileUploader.</li>
+      <li>Mocks:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">axios.post</code> to let it resolves into a mock data object.</li>
+          <li>the onClick callback <code class="language-plaintext highlighter-rouge">clickButton</code> with <code class="language-plaintext highlighter-rouge">handleSubmit</code> (to skip <code class="language-plaintext highlighter-rouge">document.getElementById</code>)</li>
+        </ul>
+      </li>
+      <li>Simulates a click event to test if mocked <code class="language-plaintext highlighter-rouge">axios.post</code> was called.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">shallow</span><span class="p">,</span> <span class="nx">mount</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">enzyme</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">axios</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="nx">FileUploader</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../file_uploader</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">.</span><span class="nx">mockResolvedValue</span><span class="p">({});</span>
+<span class="nx">handler</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">();</span>
+<span class="nx">handler</span><span class="p">.</span><span class="nx">mockImplementation</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="dl">"</span><span class="s2">completed</span><span class="dl">"</span> <span class="p">});</span>
+<span class="nx">wrapper</span> <span class="o">=</span> <span class="nx">mount</span><span class="p">(&lt;</span><span class="nc">FileUploader</span> <span class="na">handler</span><span class="p">=</span><span class="si">{</span><span class="nx">handler</span><span class="si">}</span><span class="p">/&gt;);</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">click submit triggers post JSON requests</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">blob</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Blob</span><span class="p">([</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="na">data</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span> <span class="p">})]);</span>
+    <span class="kd">let</span> <span class="nx">file</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">File</span><span class="p">(</span>
+				<span class="p">[</span><span class="nx">blob</span><span class="p">],</span> <span class="dl">'</span><span class="s1">dummy.json</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span> <span class="p">}</span>
+		<span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">fileEvent</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">target</span><span class="p">:</span> <span class="p">{</span> <span class="na">files</span><span class="p">:</span> <span class="p">[</span><span class="nx">file</span><span class="p">]</span> <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="nx">wrapper</span><span class="p">.</span><span class="nx">instance</span><span class="p">().</span><span class="nx">setSelectedFile</span><span class="p">(</span><span class="nx">fileEvent</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">handleClick</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">wrapper</span><span class="p">.</span><span class="nx">instance</span><span class="p">(),</span> <span class="dl">'</span><span class="s1">clickButton</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">handleClick</span><span class="p">.</span><span class="nx">mockImplementation</span><span class="p">(</span><span class="nx">wrapper</span><span class="p">.</span><span class="nx">instance</span><span class="p">().</span><span class="nx">handleSubmit</span><span class="p">);</span>
+    <span class="nx">wrapper</span><span class="p">.</span><span class="nx">instance</span><span class="p">().</span><span class="nx">forceUpdate</span><span class="p">();</span>
+
+    <span class="nx">wrapper</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">.submitbtn</span><span class="dl">'</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">handleClick</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+		
+		<span class="c1">// Failed, described in issue1</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span>
+        <span class="dl">'</span><span class="s1">&lt;The API endpoint&gt;</span><span class="dl">'</span><span class="p">,</span>
+        <span class="p">{</span> <span class="na">data</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span> <span class="p">}</span>
+    <span class="p">);</span>
+	
+		<span class="c1">// Failed, described in issue2</span>
+		<span class="nx">expect</span><span class="p">(</span><span class="nx">handler</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>After trying lots of search, it seems that the <code class="language-plaintext highlighter-rouge">load</code> event of the <code class="language-plaintext highlighter-rouge">FileReader</code> never get called during the tests.</p>
+
+<p>Many answers from the Internet mocks the <code class="language-plaintext highlighter-rouge">FileReader</code> as there is no need to test the <code class="language-plaintext highlighter-rouge">FileReader</code> API in our own tests.</p>
+
+<blockquote>
+  <p>Mostly inspired by:</p>
+
+</blockquote>
+
+<p><a href="https://stackoverflow.com/questions/47963118/react-how-to-test-function-called-in-filereader-onload-function">React how to test function called in FileReader onload function</a></p>
+
+<h3 id="the-workaround">The workaround</h3>
+
+<p>Since we can assume <code class="language-plaintext highlighter-rouge">FileReader</code> is working correctly <strong>AND</strong> the uploading is working correctly in manual testing,  I created another mock function to replace the reading JSON part:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">click submit triggers post JSON requests</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="kd">const</span> <span class="nx">readJSONFileSpy</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span>
+				<span class="nx">wrapper</span><span class="p">.</span><span class="nx">instance</span><span class="p">(),</span> <span class="dl">'</span><span class="s1">readJSONFile</span><span class="dl">'</span>
+		<span class="p">);</span>
+    <span class="nx">readJSONFileSpy</span><span class="p">.</span><span class="nx">mockImplementation</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nx">wrapper</span><span class="p">.</span><span class="nx">instance</span><span class="p">().</span><span class="nx">postData</span><span class="p">(</span>
+            <span class="dl">'</span><span class="s1">&lt;The API endpoint&gt;</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">data</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span> <span class="p">}</span>
+        <span class="p">);</span>
+    <span class="p">});</span>
+		<span class="c1">// Construct dummy file, simulate click...</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>This mock simply skips <code class="language-plaintext highlighter-rouge">FileReader</code> , <code class="language-plaintext highlighter-rouge">JSON.parse</code> and calls <code class="language-plaintext highlighter-rouge">postData</code> directly.</p>
+
+<hr />
+
+<h3 id="issue-2-the-thispropshandler-is-called-but-not-detected-in-jest">Issue 2: the <code class="language-plaintext highlighter-rouge">this.props.handler</code> is called but not detected in Jest</h3>
+
+<p>In this test, another issue is the handler passed into <code class="language-plaintext highlighter-rouge">FileUploader</code> : the handler is not called even after solving issue 1.</p>
+
+<p>With <code class="language-plaintext highlighter-rouge">console.log</code> I was able to see that the handler returns the result from mocked <code class="language-plaintext highlighter-rouge">axios.post</code> , however, the test still failed at <code class="language-plaintext highlighter-rouge">expect(handler).toHaveBeenCalled();</code> .</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">postData</span> <span class="o">=</span> <span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+	   <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+				<span class="c1">// I can see the console.log output after npm run test</span>
+				<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">handler</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+	      <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">handler</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+     <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+     <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Equivalently, the following test failed:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">postData really calls the passed in handler</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="nx">wrapper</span><span class="p">.</span><span class="nx">instance</span><span class="p">().</span><span class="nx">postData</span><span class="p">(</span>
+	   <span class="dl">'</span><span class="s1">&lt;The API endpoint&gt;</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">data</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span> <span class="p">}</span>
+   <span class="p">);</span>
+   <span class="nx">expect</span><span class="p">(</span><span class="nx">handler</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="the-workaround-1">The workaround</h3>
+
+<p>Prepend <code class="language-plaintext highlighter-rouge">await</code> to the simulate function solves this issue:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//...</span>
+<span class="k">await</span> <span class="nx">wrapper</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">.submitbtn</span><span class="dl">'</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">//...</span>
+</code></pre></div></div>
+
+<h2 id="thoughts">Thoughts</h2>
+
+<ul>
+  <li>I am still not sure why the <code class="language-plaintext highlighter-rouge">load</code> event was not fired in the tests. Even though I used async / await to make the test wait.</li>
+  <li>In retrospect, this test with this workaround and all mocks actually tests the logic flow (which I wrote) from “clicking the button” to “calling <code class="language-plaintext highlighter-rouge">axios.post</code>”.</li>
+  <li>I encountered these issues during my work in writing ReactJS component. Maybe the component, the tests, the pattern can have lots of improvement. Or maybe this test was actually meaningless except giving me false confidence.</li>
+</ul>
+
+  </div><a class="u-url" href="/programming/2021/08/30/The-Issues-when-I-tested-a-React-component.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Hao Chun Chang&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p>This is a blog post about a software engineer started from biochemistry to medical artifical intelligence.</p>
+      </div>
+
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">
+            Contact Me
+          </li><li><a class="u-email" href="mailto:changhaochun84@gmail.com">changhaochun84@gmail.com</a></li></ul>
+      </div>
+
+
+      <div class="footer-col footer-col-3"><ul class="social-media-list"><li><a href="https://github.com/haochunchang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">haochunchang</span></a></li><li><a href="https://www.linkedin.com/in/haochunchang84"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">haochunchang84</span></a></li></ul>
+</div>
+
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

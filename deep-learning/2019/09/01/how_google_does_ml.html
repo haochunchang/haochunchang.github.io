@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Google ML Jam Course 1: How google does Machine learning? | Hao Chun Chang’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Google ML Jam Course 1: How google does Machine learning?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Module 1&amp;2" />
+<meta property="og:description" content="Module 1&amp;2" />
+<link rel="canonical" href="https://haochunchang.github.io/deep-learning/2019/09/01/how_google_does_ml.html" />
+<meta property="og:url" content="https://haochunchang.github.io/deep-learning/2019/09/01/how_google_does_ml.html" />
+<meta property="og:site_name" content="Hao Chun Chang’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-09-01T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"Module 1&amp;2","mainEntityOfPage":{"@type":"WebPage","@id":"https://haochunchang.github.io/deep-learning/2019/09/01/how_google_does_ml.html"},"url":"https://haochunchang.github.io/deep-learning/2019/09/01/how_google_does_ml.html","@type":"BlogPosting","headline":"Google ML Jam Course 1: How google does Machine learning?","dateModified":"2019-09-01T00:00:00+00:00","datePublished":"2019-09-01T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+
+  <!-- favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/images/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- for mathjax support -->
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <link type="application/atom+xml" rel="alternate" href="https://haochunchang.github.io/feed.xml" title="Hao Chun Chang's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Hao Chun Chang&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/daily_posts.html">Daily</a><a class="page-link" href="/blog/deep_learning_posts.html">Deep-Learning</a><a class="page-link" href="/blog/programming_posts.html">Programming</a><a class="page-link" href="/blog/tools_posts.html">Tools</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Google ML Jam Course 1: How google does Machine learning?</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-09-01T00:00:00+00:00" itemprop="datePublished">Sep 1, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h3 id="module-12">Module 1&amp;2</h3>
+
+<ul>
+  <li>Model: math function</li>
+  <li>Supervised Learning: adjust model to match output and label</li>
+</ul>
+
+<blockquote>
+  <p>input, label –&gt; model –&gt; output</p>
+</blockquote>
+
+<ul>
+  <li>ML have two stages: training and inference
+    <ul>
+      <li>Both are important for ML be useful.</li>
+      <li>Inference takes inputs that model has not seen.</li>
+    </ul>
+  </li>
+  <li>replace heuristics with model</li>
+  <li>starts with heuristics but use ML when have data</li>
+</ul>
+
+<h3 id="use-case-questions">Use case questions:</h3>
+<ul>
+  <li>If the use case was an ML problem….
+    <ol>
+      <li>What is being predicted?</li>
+      <li>What data is needed?</li>
+    </ol>
+  </li>
+  <li>Now imagine the ML problem is a question of software:
+    <ol>
+      <li>What is the API for the problem during prediction?
+        <ul>
+          <li>Inputs &amp; Outputs</li>
+        </ul>
+      </li>
+      <li>Who will use this service? How are they doing it today?</li>
+    </ol>
+  </li>
+  <li>Cast it in the framework of a data problem. What are some key actions to collect, analyze, predict, and react to the data/predictions
+    <ol>
+      <li>What data are we collecting?</li>
+      <li>What data are we analyzing?</li>
+      <li>What data are we predicting?</li>
+      <li>What data are we reacting to?</li>
+    </ol>
+  </li>
+</ul>
+
+<blockquote>
+  <p>ML is scaling beyond hand-written rules.
+Simple model + more data &gt; Complex model + less data</p>
+</blockquote>
+
+<ul>
+  <li>Don’t jump into ML! Start with manual data analysis to know your data!</li>
+</ul>
+
+<h5 id="training-serving-skew">Training-serving skew</h5>
+<ul>
+  <li>Batch data in training v.s. streaming data in prediction</li>
+  <li>The pipeline should handle both to get the same input for the model.</li>
+</ul>
+
+<blockquote>
+  <p>Fail fast and iterate!</p>
+</blockquote>
+
+<hr />
+<h3 id="ml-business-module-3">ML business (Module 3)</h3>
+
+<ul>
+  <li>Defining KPI’s</li>
+  <li>Collecting data</li>
+  <li>Building infra</li>
+  <li>Optimization</li>
+  <li>
+    <p>Integration</p>
+  </li>
+  <li>Effort Allocation
+    <ul>
+      <li>Top1: Collecting data: to gather more good-quality data to serve this problem.</li>
+      <li>Top2: Building infra: make sure to serve smoothly to users.</li>
+      <li>Top3: Integration</li>
+    </ul>
+  </li>
+  <li>What is the application for?
+    <ul>
+      <li>Is your ML is improving the real world?</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>ML value comes along the way.</p>
+</blockquote>
+
+<h5 id="the-generic-feed-back-loop">The generic feed-back loop</h5>
+
+<pre><code class="language-flow">st=&gt;start: inputs 
+e=&gt;end: done
+process=&gt;operation: Process
+output=&gt;operation: Output
+ig=&gt;operation: Insight generation (Big Data)
+tune=&gt;operation: Tuning (ML)
+cond=&gt;condition: Good enough?
+
+st-&gt;process-&gt;output-&gt;ig-&gt;tune-&gt;cond
+cond(yes)-&gt;e
+cond(no)-&gt;process
+</code></pre>
+
+<ul>
+  <li>Process:
+    <ul>
+      <li>Individual: prototyping, trying new ideas.</li>
+      <li>Delegation: Gently increase people involved, formalize the process.</li>
+      <li>Digitization: Automate repetitive parts. Need IT + ML to both succeed.</li>
+    </ul>
+  </li>
+  <li>Insight generation (Analytics):
+    <ul>
+      <li>Measure data and reflect the product to tune it.</li>
+      <li>Redefine success.</li>
+    </ul>
+  </li>
+  <li>Tuning: Automated feedback that is faster than many humans.</li>
+</ul>
+
+<hr />
+<h3 id="inclusive-ml-fairness-of-ml-module-4">Inclusive ML: fairness of ML (Module 4)</h3>
+
+<ul>
+  <li>Interactive bias: user interactions may inclined to interact with one over the other.</li>
+  <li>Latent bias: More male scientists than female ones during history</li>
+  <li>
+    <p>Selection bias: do you sure data represent everyone?</p>
+  </li>
+  <li>Confusion matrix: False Positive v.s. False negative
+    <ul>
+      <li>Select the appropriate metric according to the problem (Avoid FP or avoid FN is more important?)</li>
+    </ul>
+  </li>
+  <li>Equality of oppurtunity: equal True positive rate for each groups.</li>
+  <li>A data visualization tool: Facets</li>
+</ul>
+
+<hr />
+<h3 id="python-notebooks-in-the-cloud">Python notebooks in the Cloud</h3>
+
+<ul>
+  <li>Serverless service:
+    <ul>
+      <li>Jupyter notebooks: DataLab.</li>
+      <li>BigQuery: aggregate big dataset using SQL.</li>
+    </ul>
+  </li>
+  <li>Google pre-trained APIs:
+    <ul>
+      <li>vision</li>
+      <li>intelligence (for image/video)</li>
+      <li>speech</li>
+      <li>translation</li>
+      <li>natural-language</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<h3 id="thoughts">Thoughts</h3>
+
+<ul>
+  <li>It is cool that google shared its procedure of transforming to a AI-first company by going through the five steps.</li>
+</ul>
+
+  </div><a class="u-url" href="/deep-learning/2019/09/01/how_google_does_ml.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Hao Chun Chang&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p>This is a blog post about a software engineer started from biochemistry to medical artifical intelligence.</p>
+      </div>
+
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">
+            Contact Me
+          </li><li><a class="u-email" href="mailto:changhaochun84@gmail.com">changhaochun84@gmail.com</a></li></ul>
+      </div>
+
+
+      <div class="footer-col footer-col-3"><ul class="social-media-list"><li><a href="https://github.com/haochunchang"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">haochunchang</span></a></li><li><a href="https://www.linkedin.com/in/haochunchang84"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">haochunchang84</span></a></li></ul>
+</div>
+
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
